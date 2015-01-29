@@ -3,7 +3,7 @@ function setupScroll(){
   var im = document.getElementById("image");
   var banner = document.getElementById("banner");  
 
-  var speed = .0004;
+  var speed = .0005;
   
   var accelDist = .5 * .5;
   var accel = speed * speed / (2 * accelDist);

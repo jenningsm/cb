@@ -75,5 +75,9 @@ $banner-opacity: .95;
   top: 100%;
   width: 100%;
   text-align: center;
+
+  img {
+    max-height: 80vh;
+  }
 }
 
