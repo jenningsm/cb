@@ -1,0 +1,101 @@
+
+
+#banner {
+  display: block;
+}
+
+#bannercontent {
+  position:fixed;
+  width: 100%;
+  height: 20%;
+  top: 12%;
+  z-index: 2;
+}
+
+#bannerback{
+  position: fixed;
+  width: 100%;
+  height: 12%;
+  top: 16%;
+  background: white;
+  opacity: .95;
+  z-index: 2;
+}
+
+#topbannergrad{
+  position: fixed;
+  width: 100%;
+  top: -1%;
+  height: 17%;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .95));
+  z-index: 1;
+}
+
+#bottombannergrad{
+  position: fixed;
+  width: 100%;
+  top: 28%;
+  height: 17%;
+  background: linear-gradient(rgba(255, 255, 255, .95), rgba(255, 255, 255, 0));
+  z-index: 1;
+}
+
+
+html, body, ul {
+ padding: 0;
+ margin: 0;
+ font-size: 1em;
+ font-family: baskerville;
+}
+
+body {
+  height: 50000px;
+}
+
+#logo {
+position: absolute;
+display: inline-block;
+top: 15%;
+height: 70%;
+outline: 0;
+cursor: pointer;
+}
+
+#logo img {
+  max-height: 100%;
+}
+
+#nav {
+border-bottom: 1px solid black;
+width: 70%;
+left: 15%;
+position: absolute;
+text-align: center;
+display: table;
+bottom: 28%;
+padding-bottom: 3px;
+}
+
+#dummy{
+display: table-cell;
+width: 20%;
+}  
+
+#nav a {
+text-decoration: none;
+color: black;
+width: 15%;
+text-align: center;
+display: table-cell;
+position: relative;
+}
+
+#bwork{
+position: fixed;
+top: 100%;
+width: 50%;
+left: 25%;
+text-align: center;
+transform: none;
+}
+
