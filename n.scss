@@ -1,0 +1,79 @@
+
+@import 'mixins';
+
+html, body {
+ padding: 0;
+ margin: 0;
+ font-family: baskerville;
+}
+
+
+$banner-height: 20%;
+$grad-start: $banner-height - 2;
+$banner-opacity: .95;
+
+@mixin banner-com(){
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+#bannercontent {
+  @include banner-com();
+  height: 20%;
+}
+
+#bannerback{
+  @include banner-com();
+  height: $grad-start;
+  background: white;
+  opacity: $banner-opacity;
+}
+
+#bannergrad{
+  @include banner-com();
+  @include all-linear-gradient(rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, 0));
+  top: $grad-start;
+  height: 17%;
+}
+
+#logo {
+  @include clickable();
+  position: absolute;
+  top: 12%;
+  height: 70%;
+}
+
+#logo img {
+  max-height: 100%;
+}
+
+#nav {
+  position: absolute;
+  border-bottom: 1px solid black;
+  width: 70%;
+  left: 15%;
+  display: table;
+  bottom: 31%;
+  padding-bottom: 3px;
+}
+
+#dummy{
+  display: table-cell;
+  width: 20%;
+}  
+
+#nav .button {
+  @include clickable();
+  width: 15%;
+  display: table-cell;
+  text-align: center;
+}
+
+#bwork{
+  position: fixed;
+  top: 100%;
+  width: 100%;
+  text-align: center;
+}
+
