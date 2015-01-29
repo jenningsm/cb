@@ -8,33 +8,22 @@
   position:fixed;
   width: 100%;
   height: 20%;
-  top: 12%;
   z-index: 2;
 }
 
 #bannerback{
   position: fixed;
   width: 100%;
-  height: 12%;
-  top: 16%;
+  height: 18%;
   background: white;
   opacity: .95;
   z-index: 2;
 }
 
-#topbannergrad{
+#bannergrad{
   position: fixed;
   width: 100%;
-  top: -1%;
-  height: 17%;
-  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .95));
-  z-index: 1;
-}
-
-#bottombannergrad{
-  position: fixed;
-  width: 100%;
-  top: 28%;
+  top: 18%;
   height: 17%;
   background: linear-gradient(rgba(255, 255, 255, .95), rgba(255, 255, 255, 0));
   z-index: 1;
@@ -55,7 +44,7 @@ body {
 #logo {
 position: absolute;
 display: inline-block;
-top: 15%;
+top: 12%;
 height: 70%;
 outline: 0;
 cursor: pointer;
@@ -72,7 +61,7 @@ left: 15%;
 position: absolute;
 text-align: center;
 display: table;
-bottom: 28%;
+bottom: 31%;
 padding-bottom: 3px;
 }
 

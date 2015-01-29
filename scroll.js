@@ -33,7 +33,7 @@ function setupScroll(){
     var con = document.getElementById("bwork");
   
     if(item != last){
-      changeImage(item > last);
+      setImage(item);
     }
     last = item;
   
@@ -52,6 +52,8 @@ function setupScroll(){
     con.style.transform = "translate(0, -" + translate + "%)";
   
   }
+
+  setInterval(scroll, 500);
   
   window.addEventListener('scroll', function(){requestAnimationFrame(scroll)});
 }

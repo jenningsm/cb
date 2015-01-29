@@ -23,8 +23,8 @@ nextImage.src = url + images[1];
 var prevImage = null;
 
 
-function changeImage(dir){
-  if(dir){
+function setImage(num){
+  if(num - 1 === currentNum){
     if(nextImage != null){
       prevImage = currentImage;
       currentImage = nextImage;
@@ -38,7 +38,7 @@ function changeImage(dir){
       }
     }
 
-  } else {
+  } else if(num + 1 === currentNum) {
     if(prevImage != null){
       nextImage = currentImage;
       currentImage = prevImage;
@@ -51,5 +51,21 @@ function changeImage(dir){
         prevImage = null;
       }
     }
+  } else if(num >= 0 && num < images.length) {
+    currentImage.src = url + images[num];
+    imageElement.src = currentImage.src;
+    currentNum = num;
+    if(currentNum != images.length - 1){
+       nextImage = new Image();
+       nextImage.src = url + images[currentNum+1] ;
+     } else {
+       nextImage = null;
+     }
+     if(currentNum !== 0){
+       prevImage = new Image();
+       prevImage.src = url + images[currentNum-1];
+     } else {
+       prevImage = null;
+     }
   }
 }
