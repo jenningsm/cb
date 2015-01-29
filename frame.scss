@@ -1,0 +1,49 @@
+
+$frame-color: #808080;
+$frame-thickness: 2px;
+
+@mixin framepiece($orientation, $side){
+  @if $orientation {
+    height: 0%;
+    width: 100%;
+    top: 50%;
+    @if $side {
+     border-bottom: $frame-thickness solid $frame-color;
+    }
+    @if not $side{
+     border-top: $frame-thickness solid $frame-color;
+    }
+  }
+  @if not $orientation {
+    height: 100%;
+    width: 0%;
+    left: 50%;
+    @if $side {
+     border-right: $frame-thickness solid $frame-color;
+    }
+    @if not $side{
+     border-left: $frame-thickness solid $frame-color;
+    }
+  }
+  position: fixed;
+  opacity: 0;
+}
+
+#frame {
+ #leftvert {
+    @include framepiece(false, false);
+  }
+
+ #rightvert {
+   @include framepiece(false, true);
+ }
+
+ #tophorz {
+   @include framepiece(true, false);
+ }
+
+ #bottomhorz {
+   @include framepiece(true, true);
+ }
+
+}
