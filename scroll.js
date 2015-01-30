@@ -3,6 +3,9 @@ var art = ["cba1.jpg", "cba2.jpg", "cba3.jpg", "cba4.jpg", "cba5.jpg","cba6.jpg"
 
 var scrolling = null;
 var scroller = null;
+var framefade = frame([0,0], [0, 0], [0,0]);
+
+var height = window.innerHeight;
 
 function setupScroll(images){
   var im = document.getElementById("image");
@@ -39,6 +42,15 @@ function setupScroll(images){
   
     if(item != last){
       setImage(item);
+      var cheight = im.clientHeight;
+      var cwidth = im.clientWidth;
+      var hscale = 1.4;
+      var vertOffset = (cheight + (window.innerHeight - cheight) * .5) * .5;
+      var horzOffset = (cwidth + (window.innerWidth - cwidth * hscale) * .65) * .5;
+      var scale = Math.min(horzOffset / (cwidth * hscale), vertOffset / cheight);
+      framefade = frame([scale * hscale * cwidth, scale * cheight], [.25, .25], [.5, .5]);
+
+   //   document.getElementById("frame").style.opacity = 1;
     }
     last = item;
   
@@ -48,13 +60,17 @@ function setupScroll(images){
       translate = pos * speed;
     }else if (pos < travelTime + accelTime){
       translate = .5 - .5 * accel * Math.pow(accelTime + travelTime - pos , 2);
+      framefade((pos - travelTime) / accelTime);
     } else if(pos < travelTime + accelTime + pauseTime){
       translate = .5;
-    } else {
+    } else if(pos < totalTime - travelTime){
       translate = .5 + .5 * accel * Math.pow(pos - (accelTime + travelTime + pauseTime) , 2);
+      framefade(1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
+    } else {
+      translate = 1 - (totalTime - pos) * speed;
     }
-    translate = 100 * translate * (1 + window.innerHeight / im.clientHeight);
-    con.style.transform = "translate(0, -" + translate + "%)";
+    translate = translate * (window.innerHeight +  im.clientHeight);
+    con.style.transform = "translate(0, -" + translate + "px)";
   
   }
 

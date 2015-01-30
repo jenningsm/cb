@@ -6,6 +6,13 @@
   background: linear-gradient($start, $end); /* Standard syntax */
 }
 
+@mixin frame-linear-gradient($orientation, $color){
+  background: -webkit-linear-gradient($orientation, $color, white);
+  background: -o-linear-gradient($orientation, $color, white);
+  background: -moz-linear-gradient($orientation, $color, white);
+  background: linear-gradient($orientation, $color, white);
+}
+
 @mixin clickable(){
   cursor: pointer;
   cursor: hand; 

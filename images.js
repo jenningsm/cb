@@ -1,4 +1,4 @@
-var url = "http://www.charlibeck.com/links/";
+var url = "./links/";
 
 var imageElement = document.getElementById("image");
 var container = document.getElementById("bwork");
@@ -17,6 +17,9 @@ function imageReel(images){
   return function (num){
     if(num >= 0 && num < images.length) {
       imageElement.src = url + images[num];
+
+      //make sure the next and previous images are loaded so they're
+      //  ready to go when we scroll to them
       if(num != images.length - 1){
          loadImage[0] = new Image();
          loadImage[0].src = url + images[num+1] ;

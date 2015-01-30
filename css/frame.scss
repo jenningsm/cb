@@ -1,49 +1,91 @@
 
-$frame-color: #808080;
+$frame-color: #c0c0c0;
 $frame-thickness: 2px;
 
-@mixin framepiece($orientation, $side){
-  @if $orientation {
-    height: 0%;
-    width: 100%;
-    top: 50%;
-    @if $side {
-     border-bottom: $frame-thickness solid $frame-color;
-    }
-    @if not $side{
-     border-top: $frame-thickness solid $frame-color;
-    }
-  }
-  @if not $orientation {
-    height: 100%;
-    width: 0%;
-    left: 50%;
-    @if $side {
-     border-right: $frame-thickness solid $frame-color;
-    }
-    @if not $side{
-     border-left: $frame-thickness solid $frame-color;
-    }
-  }
+
+#frame * {
   position: fixed;
+}
+
+#frame > * {
   opacity: 0;
 }
 
-#frame {
- #leftvert {
-    @include framepiece(false, false);
-  }
+//verticals
 
- #rightvert {
-   @include framepiece(false, true);
- }
+#frame .vertical {
+  height: 100%;
+  width: $frame-thickness;
+}
 
- #tophorz {
-   @include framepiece(true, false);
- }
+#frame .vertical * {
+  width: 100%;
+}
 
- #bottomhorz {
-   @include framepiece(true, true);
- }
+#frame .vertical .first, .last {
+  height: 50%;
+}
 
+#frame .vertical .mid {
+  height: 100%;
+  top: 0%;
+  background: $frame-color;
+}
+
+#frame .vertical .first {
+  bottom: 50%;
+  @include frame-linear-gradient(bottom, $frame-color);
+}
+
+#frame .vertical .last {
+  top: 50%;
+  @include frame-linear-gradient(top, $frame-color);
+}
+
+#leftvert {
+  right: 50%;
+}
+
+#rightvert{
+  left: 50%;
+}
+
+
+//horizontals
+
+#frame .horizontal {
+  width: 100%;
+  height: $frame-thickness;
+}
+
+#frame .horizontal * {
+  height: 100%;
+}
+
+#frame .horizontal .first, .last {
+  width: 50%;
+}
+
+#frame .horizontal .mid {
+  width: 100%;
+  left: 0%;
+  background: $frame-color;
+}
+
+#frame .horizontal .first {
+  right: 50%;
+  @include frame-linear-gradient(right, $frame-color);
+}
+
+#frame .horizontal .last {
+  left: 50%;
+  @include frame-linear-gradient(left, $frame-color);
+}
+
+#tophorz {
+  bottom: 50%;
+}
+
+#bottomhorz{
+  top: 50%;
 }
