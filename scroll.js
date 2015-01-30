@@ -29,6 +29,7 @@ function setupScroll(images){
 
   var lastitem = -1;
   var lastpos = -1;
+  var bannervis = true;
   
   window.removeEventListener('scroll', scroller);
 
@@ -38,7 +39,15 @@ function setupScroll(images){
     var pos = scroll % (totalTime);
     var item = Math.max(Math.floor(scroll / totalTime), 0);
     if(item === 0){
-      banner.style.opacity = 1 - (scroll - offset) / bannerFadeOut;
+      var bopacity = 1 - (scroll - offset) / bannerFadeOut;
+      banner.style.opacity = bopacity;
+      if(bannervis && bopacity <= 0){
+        banner.style.pointerEvents = "none";
+        bannervis = false;
+      } else if (!bannervis && bopacity > 0){
+        banner.style.pointerEvents = "auto";
+        bannervis = true;
+      }
       if(pos < totalTime * .5){
         framefade((scroll - offset) / bannerFadeOut);
       }
