@@ -27,7 +27,8 @@ function setupScroll(images){
   var setImage = imageReel(images);
   document.body.style.height = (window.innerHeight + images.length * totalTime - totalTime * .5 - offset) + "px";
 
-  var last = -1;
+  var lastitem = -1;
+  var lastpos = -1;
   
   window.removeEventListener('scroll', scroller);
 
@@ -44,7 +45,7 @@ function setupScroll(images){
       pos = Math.max(totalTime * .5, pos);
     }
   
-    if(item != last){
+    if(item != lastitem){
       setImage(item);
       var cheight = im.clientHeight;
       var cwidth = im.clientWidth;
@@ -56,7 +57,7 @@ function setupScroll(images){
       framefade = frame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
 
     }
-    last = item;
+    lastitem = item;
   
     var translate;
   
@@ -74,8 +75,18 @@ function setupScroll(images){
       translate = 1 - (totalTime - pos) * speed;
     }
     translate = translate * (window.innerHeight +  im.clientHeight);
-    con.style.transform = "translate(0, -" + translate + "px)";
-  
+    if(pos != lastpos){
+      /*
+        Only really need a regular 2d translate here, but the images were sort of flickering in chrome as you scrolled, and this fixed it
+        one post I read said using translate3d forces hardware acceleration, but it was my understanding that all transforms
+        are hardware accelerated anyways. another I read said that using translate3d puts the element in its own layer so that it
+        doesn't get repainted on scrolling.
+
+        the regular 2d transform works fine in firefox
+      */
+      con.style.transform = "translate3d(0, -" + translate + "px, 0)";
+      lastpos = pos;
+    }
   }
 
   function rafs(){
