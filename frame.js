@@ -35,7 +35,10 @@ function frame(box, solid, fade){
 
       var gradscale = fade[i] * (dim - box[i]) / dim;
       for(var k = 0; k < 2; k++){
-        var translate = ((midsize + (gradscale * .485) - .5) * dim) * (k * 2 - 1);
+        //in the following assignment, "gradscale * .47" really should be "gradscale * .5", but there's a bug
+        //creating a tiny gap between the grad and solid line
+        //the multiplication by .47 instead of .5 is a hack to fix it, i don't know what's really causing the problem
+        var translate = ((midsize + (gradscale * .47) - .5) * dim) * (k * 2 - 1);
         var transform = composeTransform("translate", i, translate, 0, "px");
         transform += " ";
         transform += composeTransform("scale", i, gradscale, 1, "");

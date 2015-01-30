@@ -6,6 +6,7 @@ var scroller = null;
 var framefade = frame([0,0], [0, 0], [0,0]);
 
 var height = window.innerHeight;
+var width = document.documentElement.clientWidth;
 
 function setupScroll(images){
   var im = document.getElementById("image");
@@ -18,7 +19,7 @@ function setupScroll(images){
   var accelTime = Math.sqrt(2 * accelDist / accel);
   var travelDist = .5 - accelDist;
   var travelTime = travelDist / speed;
-  var pauseTime = 750;
+  var pauseTime = 500;
   var totalTime = pauseTime + 2 * (travelTime + accelTime);
   var bannerFadeOut = 1000;
   var offset = (totalTime - pauseTime) * .5 - bannerFadeOut;
@@ -26,7 +27,7 @@ function setupScroll(images){
   var setImage = imageReel(images);
   document.body.style.height = (window.innerHeight + images.length * totalTime - totalTime * .5 - offset) + "px";
 
-  var last = 0;
+  var last = -1;
   
   window.removeEventListener('scroll', scroller);
 
@@ -36,7 +37,10 @@ function setupScroll(images){
     var pos = scroll % (totalTime);
     var item = Math.max(Math.floor(scroll / totalTime), 0);
     if(item === 0){
-      banner.style.opacity = 1 - window.pageYOffset / bannerFadeOut;
+      banner.style.opacity = 1 - (scroll - offset) / bannerFadeOut;
+      if(pos < totalTime * .5){
+        framefade((scroll - offset) / bannerFadeOut);
+      }
       pos = Math.max(totalTime * .5, pos);
     }
   
@@ -44,13 +48,13 @@ function setupScroll(images){
       setImage(item);
       var cheight = im.clientHeight;
       var cwidth = im.clientWidth;
-      var hscale = 1.4;
-      var vertOffset = (cheight + (window.innerHeight - cheight) * .5) * .5;
-      var horzOffset = (cwidth + (window.innerWidth - cwidth * hscale) * .65) * .5;
-      var scale = Math.min(horzOffset / (cwidth * hscale), vertOffset / cheight);
-      framefade = frame([scale * hscale * cwidth, scale * cheight], [.25, .25], [.5, .5]);
+      var dir = (cwidth / cheight > 1);
 
-   //   document.getElementById("frame").style.opacity = 1;
+      var vertOffset = (cheight + (height - cheight) * (dir ? .4 : .6)) * .5;
+      var horzOffset = (cwidth + (width - cwidth) * (dir ? .5 : .3)) * .5;
+
+      framefade = frame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
+
     }
     last = item;
   
