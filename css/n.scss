@@ -76,9 +76,13 @@ $banner-opacity: .95;
   width: 100%;
   text-align: center;
   z-index: 0;
+  display: table;
 
   img {
     max-height: 80vh;
+    max-width: 80vw;
+    display: table-cell;
+    vertical-align: middle;
   }
 }
 
