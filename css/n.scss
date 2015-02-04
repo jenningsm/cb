@@ -8,6 +8,8 @@ html, body {
  font-family: baskerville;
 }
 
+$nav-width: 70%;
+
 $banner-height: 20%;
 $grad-height: 17%;
 $grad-start: $banner-height - 2;
@@ -27,16 +29,30 @@ $banner-opacity: .95;
 #bannerback{
   @include banner-com();
   height: $grad-start + $grad-height;
-  background: white;
-  @include two-all-linear-gradient(rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+  @include two-all-linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
                                    percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
 }
 
-#bannergrad{
+$footer-height: 8.5%;
+$footer-grad-height: 10%;
+$footer-grad-start: $footer-height;
+
+#footercontent {
+  position: fixed;
+  width: $nav-width * .9;
+  left: (100% - $nav-width * .9) / 2;
+  z-index: 3;
+  height: $footer-height;
+  bottom: 0%;
+  border-top: 1px solid black;
+}
+
+#footerback{
   @include banner-com();
-  @include all-linear-gradient(rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, 0));
-  top: $grad-start;
-  height: 17%;
+  height: $footer-grad-start + $footer-grad-height;
+  bottom: 0%;
+  @include two-all-linear-gradient(bottom, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+                                   percentage($footer-grad-start / ($footer-grad-height + $footer-grad-start)) , rgba(255, 255, 255, 0));
 }
 
 #logo {
@@ -56,8 +72,8 @@ $banner-opacity: .95;
 #nav {
   position: absolute;
   border-bottom: 1px solid black;
-  width: 70%;
-  left: 15%;
+  width: $nav-width;
+  left: (100% - $nav-width) / 2;
   display: table;
   bottom: 31%;
   padding-bottom: 3px;

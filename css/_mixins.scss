@@ -6,11 +6,11 @@
   background: linear-gradient($start, $end); /* Standard syntax */
 }
 
-@mixin two-all-linear-gradient($start, $mid, $midpoint, $end){
-  background: -webkit-linear-gradient(top, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(top, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: -moz-linear-gradient(top, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: linear-gradient(top, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
+@mixin two-all-linear-gradient($dir, $start, $mid, $midpoint, $end){
+  background: -webkit-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
+  background: -moz-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
+  background: linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
 }
 
 @mixin frame-linear-gradient($orientation, $color){
