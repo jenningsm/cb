@@ -4,13 +4,13 @@ var container = document.getElementById("bwork");
 
 function loadImage(src){
   var img = new Image();
-  img.addEventListener('load', function() { img = null; });
+  img.addEventListener('load', function() { img = null;});
   img.src = src;
 }
 
 function imageReel(images){
 
-  imageElement.src = imagepath+images[0];
+  imageElement.src = imagepath + images[0];
   loadImage(imagepath+images[1]);
 
   return function (num){
