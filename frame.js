@@ -14,8 +14,6 @@ function composeTransform(transform, dim, x, stat, unit) {
   return transform + "(" + (dim !== 0 ? still + "," + trans : trans + "," + still) + ")";
 }
 
-var height = document.documentElement.clientHeight;
-
 /* 
     frame: takes frame dimension info, transforms the frame elements to match, and returns a painter for the frame elements
 

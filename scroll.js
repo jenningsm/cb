@@ -5,17 +5,22 @@ var imagepath = "./links/";
 //images belonging to each page
 var art = ["cba1.jpg", "cba2.jpg", "cba3.jpg", "cba4.jpg", "cba5.jpg","cba6.jpg","cba7.jpg","cba8.jpg","cba9.jpg","cba10.jpg","cba11.jpg","cba12.jpg"];
 
+/*
+   due to some wierd issues with scrolling, the scrolling function
+   needs to be called every half second using setInterval. When, the
+   scroll function changes, that call to setInterval for the old
+   scroll function needs to be ended. the scrolling variable is used
+   to do that
+*/
 var scrolling = null;
-var scroller = null;
-var framefade = frame([0,0], [0, 0], [0,0]);
 
-var height = window.innerHeight;
-var width = document.documentElement.clientWidth;
+//the current scrolling function
+var scroller = null;
+//painter for the frame
+var framePainter = frame([0,0], [0, 0], [0,0]);
+
 
 function setupScroll(images){
-  var im = document.getElementById("image");
-  var con = document.getElementById("bwork");
-  var banner = document.getElementById("banner");  
 
   var speed = .0005;
   var accelDist = .5 * .5;
@@ -29,7 +34,7 @@ function setupScroll(images){
   var offset = (totalTime - pauseTime) * .5 - bannerFadeOut;
 
   var setImage = imageReel(images);
-  document.body.style.height = (window.innerHeight + images.length * totalTime - totalTime * .5 - offset) + "px";
+  document.body.style.height = (height + images.length * totalTime - totalTime * .5 - offset) + "px";
 
   var lastitem = -1;
   var lastpos = -1;
@@ -53,21 +58,21 @@ function setupScroll(images){
         bannervis = true;
       }
       if(pos < totalTime * .5){
-        framefade((scroll - offset) / bannerFadeOut);
+        framePainter((scroll - offset) / bannerFadeOut);
       }
       pos = Math.max(totalTime * .5, pos);
     }
   
     if(item != lastitem){
       setImage(item);
-      var cheight = im.clientHeight;
-      var cwidth = im.clientWidth;
+      var cheight = imgElement.clientHeight;
+      var cwidth = imgElement.clientWidth;
       var dir = (cwidth / cheight > 1);
 
       var vertOffset = (cheight + (height - cheight) * (dir ? .4 : .6)) * .5;
       var horzOffset = (cwidth + (width - cwidth) * (dir ? .5 : .3)) * .5;
 
-      framefade = frame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
+      framePainter = frame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
 
     }
     lastitem = item;
@@ -78,16 +83,16 @@ function setupScroll(images){
       translate = pos * speed;
     }else if (pos < travelTime + accelTime){
       translate = .5 - .5 * accel * Math.pow(accelTime + travelTime - pos , 2);
-      framefade((pos - travelTime) / accelTime);
+      framePainter((pos - travelTime) / accelTime);
     } else if(pos < travelTime + accelTime + pauseTime){
       translate = .5;
     } else if(pos < totalTime - travelTime){
       translate = .5 + .5 * accel * Math.pow(pos - (accelTime + travelTime + pauseTime) , 2);
-      framefade(1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
+      framePainter(1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
     } else {
       translate = 1 - (totalTime - pos) * speed;
     }
-    translate = translate * (window.innerHeight +  im.clientHeight);
+    translate = translate * (height +  imgElement.clientHeight);
     if(pos != lastpos){
       /*
         Only really need a regular 2d translate here, but the images were sort of flickering in chrome as you scrolled, and this fixed it
@@ -97,7 +102,7 @@ function setupScroll(images){
 
         the regular 2d transform works fine in firefox
       */
-      con.style.transform = "translate3d(0, -" + translate + "px, 0)";
+      imgContainer.style.transform = "translate3d(0, -" + translate + "px, 0)";
       lastpos = pos;
     }
   }
