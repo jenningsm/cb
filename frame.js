@@ -1,6 +1,6 @@
 
 /*
-   helper function
+   helper function for creating transform strings
 
    transform: the type of transform to compose (e.g. translate, scale)
    dim: the dimension along which the transform is happening (true == horizontal, false == vertical)

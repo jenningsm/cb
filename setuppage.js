@@ -10,12 +10,18 @@ var scrolling = null;
 
 //the current scrolling function
 var scroller = null;
+//current resize
+var rsz = null;
 
 function setupPage(page){
 
   window.removeEventListener('scroll', scroller);
+  window.removeEventListener('resize', rsz);
 
-  scroller = createScroller(page);
+  var s = createScroller(page);
+  scroller = function(yresize){
+     requestAnimationFrame(function(){ s(yresize);});
+  }
 
   function onImgLoad() { 
     scroller();
@@ -24,15 +30,18 @@ function setupPage(page){
 
   imgElement.addEventListener("load", onImgLoad);
 
-  function rafs(){
-    requestAnimationFrame(scroller);
+  function noResize(){
+    scroller(false);
+  }
+  rsz = function(){
+    scroller(true);
   }
 
   clearInterval(scrolling);
-  scrolling = setInterval(rafs, 500);
+  scrolling = setInterval(noResize, 500);
   
-  window.addEventListener('scroll', rafs);
-
+  window.addEventListener('scroll', scroller);
+  window.addEventListener('resize', rsz);
 }
 
 setupPage(art);

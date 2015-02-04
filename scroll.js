@@ -22,11 +22,11 @@ var travelDist = .5 - accelDist;
 //time over which the the img travels at a constant velocity
 var travelTime = travelDist / speed;
 //time spent with the image in the center, not moving at all
-var pauseTime = 500;
+var pauseTime = 700;
 //total time, from when the img enters the page to when it has exited
 var totalTime = pauseTime + 2 * (travelTime + accelTime);
 //the amount of time over which the banner at the top of the page fades out, only in the very beginning
-var bannerFadeOut = 1000;
+var bannerFadeOut = 1300;
 //offset for starting purposes
 var offset = (totalTime - pauseTime) * .5 - bannerFadeOut;
 
@@ -38,7 +38,7 @@ function createScroller(images){
   var lastitem = -1;
   var bannervis = true;
 
-  return function(){
+  return function(pleaseResize){
     var scroll = window.pageYOffset + offset;
 
     var pos = scroll % (totalTime);
@@ -58,6 +58,9 @@ function createScroller(images){
 
     if(item != lastitem){
       setImage(item);
+    }
+
+    if(item != lastitem || (pleaseResize !== undefined && pleaseResize)){
       var cheight = imgElement.clientHeight;
       var cwidth = imgElement.clientWidth;
       var dir = (cwidth / cheight > 1);
