@@ -1,4 +1,13 @@
 
+/*
+   helper function
+
+   transform: the type of transform to compose (e.g. translate, scale)
+   dim: the dimension along which the transform is happening (true == horizontal, false == vertical)
+   x: the value for the dimension being transformed
+   stat: static, the value for the element not being transformed
+   unit: the unit used, (e.g. %, px, blank)
+*/
 function composeTransform(transform, dim, x, stat, unit) {
   var still = stat + unit;
   var trans = String(x) + unit;
@@ -7,15 +16,18 @@ function composeTransform(transform, dim, x, stat, unit) {
 
 var height = document.documentElement.clientHeight;
 
+/* 
+    frame: takes frame dimension info, transforms the frame elements to match, and returns a painter for the frame elements
+
+    each argument is a 2 member array representing x and y dimensions:
+
+    box: the distance, in pixels, from the end of the box to the center, along each dimension
+    solid: the distance, as a porportion of the distance from the end of the box to the edge of the screen, the solid line
+           will go before the gradient starts, along each dimension.
+    fade: refers to the length of the gradient line in the same way solid refers to the length of the solid line past the box
+
+*/
 function frame(box, solid, fade){
-  /* each argument is a 2 member array representing x and y dimensions:
-
-       box: the distance, in pixels, from the end of the box to the center, along each dimension
-       solid: the distance, as a porportion of the distance from the end of the box to the edge of the screen, the solid line
-              will go before the gradient starts, along each dimension.
-       fade: refers to the length of the gradient line in the same way solid refers to the length of the solid line past the box
-
-  */
   var verts = [document.getElementById("leftvert"), document.getElementById("rightvert")];  
   var hrz = [document.getElementById("tophorz"), document.getElementById("bottomhorz")];  
   var frm = [hrz, verts];
