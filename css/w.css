@@ -89,9 +89,16 @@ html, body {
   position: fixed;
   width: 100%;
   z-index: 2;
-  height: 18%;
+  height: 35%;
   background: white;
-  opacity: 0.95; }
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  /* For Safari 5.1 to 6.0 */
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  /* For Safari 5.1 to 6.0 */
+  background: linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  /* For Safari 5.1 to 6.0 */ }
 
 #bannergrad {
   position: fixed;

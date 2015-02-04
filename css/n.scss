@@ -9,6 +9,7 @@ html, body {
 }
 
 $banner-height: 20%;
+$grad-height: 17%;
 $grad-start: $banner-height - 2;
 $banner-opacity: .95;
 
@@ -20,14 +21,15 @@ $banner-opacity: .95;
 
 #bannercontent {
   @include banner-com();
-  height: 20%;
+  height: $banner-height;
 }
 
 #bannerback{
   @include banner-com();
-  height: $grad-start;
+  height: $grad-start + $grad-height;
   background: white;
-  opacity: $banner-opacity;
+  @include two-all-linear-gradient(rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+                                   percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
 }
 
 #bannergrad{
