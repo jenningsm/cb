@@ -118,7 +118,8 @@ html, body {
   user-select: none;
   position: absolute;
   top: 12%;
-  height: 70%; }
+  height: 70%;
+  z-index: 1; }
 
 #logo img {
   max-height: 100%; }
