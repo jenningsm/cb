@@ -47,6 +47,7 @@ $banner-opacity: .95;
 
 #logo img {
   max-height: 100%;
+  max-width: 100%;
 }
 
 #nav {
@@ -77,13 +78,15 @@ $banner-opacity: .95;
   width: 100%;
   text-align: center;
   z-index: 0;
-  display: table;
+//  display: table;
 
   img {
     max-height: 80vh;
     max-width: 80vw;
-    display: table-cell;
-    vertical-align: middle;
+    display: block;
+    margin: 0 auto;
+ //   display: table-cell;
+ //   vertical-align: middle;
   }
 }
 
