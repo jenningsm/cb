@@ -1,4 +1,6 @@
-document.getElementById("logo").style.left = 50 - 100 * (window.innerHeight * .7 * .2) / (2 * window.innerWidth) + "%";
+var logo = document.getElementById("logo");
+logo.style.left = 50 - 100 * (window.innerHeight * .7 * .2) / (2 * window.innerWidth) + "%";
+logo.style.visibility = "visible";
 
 window.requestAnimationFrame = window.requestAnimationFrame
  || window.mozRequestAnimationFrame
