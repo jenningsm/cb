@@ -9,17 +9,17 @@
 var scrolling = null;
 
 //the current scrolling function
-var scroller = null;
+var scrollEvent = null;
 //current resize
 var rsz = null;
 
 function setupPage(page){
 
-  window.removeEventListener('scroll', scroller);
+  window.removeEventListener('scroll', scrollEvent);
   window.removeEventListener('resize', rsz);
 
   var s = createScroller(page);
-  scroller = function(yresize){
+  var scroller = function(yresize){
      requestAnimationFrame(function(){ s(yresize);});
   }
 
@@ -37,10 +37,14 @@ function setupPage(page){
     scroller(true);
   }
 
-  clearInterval(scrolling);
-  scrolling = setInterval(noResize, 500);
-  
-  window.addEventListener('scroll', scroller);
+  var timeout = null;
+  scrollEvent = function(){
+    noResize();
+    clearTimeout(timeout);
+    timeout = setTimeout(noResize, 200);
+  }
+
+  window.addEventListener('scroll', scrollEvent);
   window.addEventListener('resize', rsz);
 }
 
