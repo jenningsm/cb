@@ -5,8 +5,6 @@ var imagepath = "./links/";
 //images belonging to each page
 var art = ["cba1.jpg", "cba2.jpg", "cba3.jpg", "cba4.jpg", "cba5.jpg","cba6.jpg","cba7.jpg","cba8.jpg","cba9.jpg","cba10.jpg","cba11.jpg","cba12.jpg"];
 
-//painter for the frame
-var framePainter = frame([0,0], [0, 0], [0,0]);
 
 //to simulate newtonian motion, we use the current yoffset of the page as the current time
 
@@ -30,78 +28,48 @@ var bannerFadeOut = 1300;
 //offset for starting purposes
 var offset = (totalTime - pauseTime) * .5 - bannerFadeOut;
 
-function createScroller(images){
 
-  var setImage = imageReel(images);
-  document.body.style.height = (height + images.length * totalTime - totalTime * .5 - offset) + "px";
+function setHeight(numImages){
+  document.body.style.height = (height + numImages * totalTime - totalTime * .5 - offset) + "px";
+}
 
-  var lastitem = -1;
-  var bannervis = true;
+function scrollValues(){
 
-  return function(pleaseResize){
-    var scroll = window.pageYOffset + offset;
+  var scroll = window.pageYOffset + offset;
+  var pos = scroll % (totalTime);
+  var itemNum = Math.max(Math.floor(scroll / totalTime), 0);
 
-    var pos = scroll % (totalTime);
-    var item = Math.max(Math.floor(scroll / totalTime), 0);
-    if(item === 0){
-      var bopacity = 1 - (scroll - offset) / bannerFadeOut;
-      banner.style.opacity = bopacity;
-      if(bannervis && bopacity <= 0){
-        banner.style.pointerEvents = "none";
-        bannervis = false;
-      } else if (!bannervis && bopacity > 0){
-        banner.style.pointerEvents = "auto";
-        bannervis = true;
-      }
-      pos = Math.max(totalTime * .5, pos);
-    }
-
-    if(item != lastitem){
-      setImage(item);
-    }
-
-    if(item != lastitem || (pleaseResize !== undefined && pleaseResize)){
-      var cheight = imgElement.clientHeight;
-      var cwidth = imgElement.clientWidth;
-      var dir = (cwidth / cheight > 1);
- 
-      var vertOffset = (cheight + (height - cheight) * (dir ? .4 : .6)) * .5;
-      var horzOffset = (cwidth + (width - cwidth) * (dir ? .5 : .3)) * .5;
-
-      framePainter = frame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
-    
-      lastitem = item;
-    }
-
-  
-    var translate;
-    var frameOpacity;
-  
-    if(pos < travelTime){
-      translate = pos * speed;
-      frameOpacity = 0;
-    }else if (pos < travelTime + accelTime){
-      translate = .5 - .5 * accel * Math.pow(accelTime + travelTime - pos , 2);
-      frameOpacity = (pos - travelTime) / accelTime;
-    } else if(pos < travelTime + accelTime + pauseTime){
-      translate = .5;
-      frameOpacity = 1;
-    } else if(pos < totalTime - travelTime){
-      translate = .5 + .5 * accel * Math.pow(pos - (accelTime + travelTime + pauseTime) , 2);
-      frameOpacity = (1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
-    } else {
-      translate = 1 - (totalTime - pos) * speed;
-      frameOpacity = 0;
-    }
-
-    translate = translate * (height +  imgElement.clientHeight);
-    if(item === 0 && pos <= totalTime * .5){
-      frameOpacity = ((scroll - offset) / bannerFadeOut);
-    }
-
-    //used translate3d instead of regular translate for performance reasons
-    imgContainer.style.transform = "translate3d(0, -" + translate + "px, 0)";
-    framePainter(frameOpacity);
+  var bannerOpacity = 0;
+  if(itemNum === 0){
+    bannerOpacity = 1 - (scroll - offset) / bannerFadeOut;
+    pos = Math.max(totalTime * .5, pos);
   }
+
+  var translate;
+  var frameOpacity;
+
+  if(pos < travelTime){
+    translate = pos * speed;
+    frameOpacity = 0;
+  }else if (pos < travelTime + accelTime){
+    translate = .5 - .5 * accel * Math.pow(accelTime + travelTime - pos , 2);
+    frameOpacity = (pos - travelTime) / accelTime;
+  } else if(pos < travelTime + accelTime + pauseTime){
+    translate = .5;
+    frameOpacity = 1;
+  } else if(pos < totalTime - travelTime){
+    translate = .5 + .5 * accel * Math.pow(pos - (accelTime + travelTime + pauseTime) , 2);
+    frameOpacity = (1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
+  } else {
+    translate = 1 - (totalTime - pos) * speed;
+    frameOpacity = 0;
+  }
+
+  if(itemNum === 0 && pos <= totalTime * .5){
+    frameOpacity = ((scroll - offset) / bannerFadeOut);
+  }
+
+  return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosiion' : translate, 'itemNum' : itemNum};
+
 }
 

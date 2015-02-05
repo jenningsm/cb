@@ -15,7 +15,7 @@ function composeTransform(transform, dim, x, stat, unit) {
 }
 
 /* 
-    frame: takes frame dimension info, transforms the frame elements to match, and returns a painter for the frame elements
+    frame: takes frame dimension info, and transforms the frame elements to match
 
     each argument is a 2 member array representing x and y dimensions:
 
@@ -25,10 +25,16 @@ function composeTransform(transform, dim, x, stat, unit) {
     fade: refers to the length of the gradient line in the same way solid refers to the length of the solid line past the box
 
 */
-function frame(box, solid, fade){
-  var verts = [document.getElementById("leftvert"), document.getElementById("rightvert")];  
-  var hrz = [document.getElementById("tophorz"), document.getElementById("bottomhorz")];  
-  var frm = [hrz, verts];
+
+var lv = document.getElementById("leftvert");
+var rv = document.getElementById("rightvert");
+var th = document.getElementById("tophorz");
+var bh = document.getElementById("bottomhorz");
+
+function resizeFrame(box, solid, fade){
+  var verts = [lv, rv];  
+  var hrz = [th, bh];  
+  frm = [hrz, verts];
 
   for(var i = 0; i < 2; i++){
     var dim = (i !== 0 ? height : document.body.clientWidth) / 2;
@@ -55,16 +61,19 @@ function frame(box, solid, fade){
         grads[k].style.transform = transform;
       }      
     }
-
   }
-
-  var fr = document.getElementById("frame");
-  return function(x) { 
-
-    leftvert.style.opacity = x;
-    rightvert.style.opacity = x;
-    bottomhorz.style.opacity = x;
-    tophorz.style.opacity = x;
-
-  };
 }
+
+
+function frameImage(){
+  var cheight = imgElement.clientHeight;
+  var cwidth = imgElement.clientWidth;
+  var dir = (cwidth / cheight > 1);
+
+  var vertOffset = (cheight + (height - cheight) * (dir ? .4 : .6)) * .5;
+  var horzOffset = (cwidth + (width - cwidth) * (dir ? .5 : .3)) * .5;
+
+  resizeFrame([horzOffset, vertOffset], [.25, .25], [.5, .5]);
+}
+
+imgElement.addEventListener('load', frameImage);
