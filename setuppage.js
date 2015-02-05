@@ -1,13 +1,3 @@
-
-/*
-   due to some wierd issues with scrolling, the scrolling function
-   needs to be called every half second using setInterval. When, the
-   scroll function changes, that call to setInterval for the old
-   scroll function needs to be ended. the scrolling variable is used
-   to do that
-*/
-var scrolling = null;
-
 //the current scrolling function
 var scrollEvent = null;
 //current resize
