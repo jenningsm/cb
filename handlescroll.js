@@ -8,24 +8,24 @@ function framePainter(x) {
   bh.style.opacity = x;
   th.style.opacity = x;
 }
-
 function bannerPainter(x){
    banner.style.opacity = x;
 } 
 
-function getScroller(images){
+function createScroller(images){
 
   setHeight(images.length);
   var setImage = imageReel(images);
   var curr = 0;
-  
+
   return function(){
     var values = scrollValues();
-
+  
     if(curr !== values.itemNum){
       setImage(values.itemNum);
       curr = values.itemNum;
     }
+  
     framePainter(values.frameOpacity);
     bannerPainter(values.bannerOpacity);
     imageMover(values.imgPosition);

@@ -6,8 +6,8 @@ function setupPage(page){
   window.removeEventListener('scroll', scrollEvent);
 
   var s = createScroller(page);
-  var scroller = function(yresize){
-     requestAnimationFrame(function(){ s(yresize);});
+  var scroller = function(){
+     requestAnimationFrame(s);
   }
 
   function onImgLoad() { 
@@ -19,7 +19,7 @@ function setupPage(page){
 
   var timeout = null;
   scrollEvent = function(){
-    noResize();
+    scroller();
     clearTimeout(timeout);
     timeout = setTimeout(noResize, 200);
   }
