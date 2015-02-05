@@ -69,7 +69,7 @@ function scrollValues(){
     frameOpacity = ((scroll - offset) / bannerFadeOut);
   }
 
-  return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosiion' : translate, 'itemNum' : itemNum};
+  return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosition' : translate, 'itemNum' : itemNum};
 
 }
 

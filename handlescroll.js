@@ -1,6 +1,6 @@
 
 function imageMover(x){
-  imgContainer.style.transform = "translate3d(0, -" + translate * 100 + "%, 0)";
+  imgContainer.style.transform = "translate3d(0, -" + x * (height + imgElement.clientHeight) + "px, 0)";
 }
 function framePainter(x) { 
   lv.style.opacity = x; 

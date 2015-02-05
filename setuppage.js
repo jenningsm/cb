@@ -4,11 +4,22 @@ var scrollEvent = null;
 function setupPage(page){
 
   window.removeEventListener('scroll', scrollEvent);
+  window.removeEventListener('resize', scrollEvent);
 
   var s = createScroller(page);
   var scroller = function(){
      requestAnimationFrame(s);
   }
+
+  var timeout = null;
+  scrollEvent = function(){
+    scroller();
+    clearTimeout(timeout);
+    timeout = setTimeout(scroller, 100);
+  }
+
+  window.addEventListener('scroll', scrollEvent);
+  window.addEventListener('resize', scrollEvent);
 
   function onImgLoad() { 
     scroller();
@@ -16,15 +27,6 @@ function setupPage(page){
   };
 
   imgElement.addEventListener("load", onImgLoad);
-
-  var timeout = null;
-  scrollEvent = function(){
-    scroller();
-    clearTimeout(timeout);
-    timeout = setTimeout(noResize, 200);
-  }
-
-  window.addEventListener('scroll', scrollEvent);
 }
 
 setupPage(art);

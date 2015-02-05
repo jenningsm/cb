@@ -77,3 +77,4 @@ function frameImage(){
 }
 
 imgElement.addEventListener('load', frameImage);
+window.addEventListener('resize', frameImage);
