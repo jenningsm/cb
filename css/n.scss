@@ -19,6 +19,7 @@ $banner-opacity: .95;
   position: fixed;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 #header {
@@ -75,6 +76,7 @@ $footer-grad-start: $footer-height;
 }
 
 #footerback{
+  z-index: 1;
   position: absolute;
   width: 100%;
   height: $footer-grad-start + $footer-grad-height;
