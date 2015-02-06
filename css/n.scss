@@ -15,19 +15,23 @@ $grad-height: 17%;
 $grad-start: $banner-height - 2;
 $banner-opacity: .95;
 
-@mixin banner-com(){
+#banner {
   position: fixed;
   width: 100%;
+  height: 100%;
+}
+
+#header {
+  height: $banner-height;
+  width: 100%;
+  position: absolute;
   z-index: 2;
 }
 
-#headercontent {
-  @include banner-com();
-  height: $banner-height;
-}
-
 #headerback{
-  @include banner-com();
+  width: 100%;
+  position: absolute;
+  z-index: 1;
   height: $grad-start + $grad-height;
   @include two-all-linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
                                    percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
@@ -38,7 +42,7 @@ $footer-grad-height: 10%;
 $footer-grad-start: $footer-height;
 
 #footer {
-  position: fixed;
+  position: absolute;
   width: $nav-width * .95;
   left: (100% - $nav-width * .95) / 2;
   z-index: 3;
@@ -71,14 +75,15 @@ $footer-grad-start: $footer-height;
 }
 
 #footerback{
-  @include banner-com();
+  position: absolute;
+  width: 100%;
   height: $footer-grad-start + $footer-grad-height;
   bottom: 0%;
   @include two-all-linear-gradient(bottom, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
                                    percentage($footer-grad-start / ($footer-grad-height + $footer-grad-start)) , rgba(255, 255, 255, 0));
 }
 
-#headercontainer {
+#headercontent {
   height: 70%;
   top: 12%;
   width: 100%;
