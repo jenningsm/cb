@@ -160,7 +160,9 @@ html, body {
   position: absolute;
   height: 100%;
   z-index: 1;
-  visibility: hidden; }
+  visibility: hidden;
+  text-align: center;
+  width: 20%; }
 
 #logo img {
   max-height: 100%;
