@@ -101,26 +101,46 @@ html, body {
 
 #footercontent {
   position: fixed;
-  width: 63%;
-  left: 18.5%;
+  width: 66.5%;
+  left: 16.75%;
   z-index: 3;
-  height: 8.5%;
+  height: 10%;
   bottom: 0%;
   border-top: 1px solid black; }
+
+#footercontent > * {
+  display: table;
+  table-layout: fixed;
+  position: absolute;
+  top: 0%;
+  height: 85%;
+  width: 100%; }
+
+#footercontent > * > .dummy {
+  display: table-cell; }
+
+#footercontent > * > .info {
+  height: 100%;
+  width: 25%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: .8em;
+  word-wrap: break-word; }
 
 #footerback {
   position: fixed;
   width: 100%;
   z-index: 2;
-  height: 18.5%;
+  height: 20%;
   bottom: 0%;
-  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 45.94595%, rgba(255, 255, 255, 0));
+  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 45.94595%, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
-  background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 45.94595%, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
-  background: linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 45.94595%, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 50%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */ }
 
 #logo {

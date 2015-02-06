@@ -7,7 +7,7 @@ function loadImage(src){
 
 function imageReel(images){
 
-  imgElement.src = imagepath + images[0];
+  loadImage(imagepath+images[0]);
   loadImage(imagepath+images[1]);
 
   return function (num){

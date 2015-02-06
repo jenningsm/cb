@@ -16,18 +16,28 @@ function createScroller(images){
 
   setHeight(images.length);
   var setImage = imageReel(images);
-  var curr = 0;
+  var curr = -1;
+  var bannervis = true;
 
-  return function(){
+  function scr(){
     var values = scrollValues();
   
     if(curr !== values.itemNum){
       setImage(values.itemNum);
       curr = values.itemNum;
     }
-  
-    framePainter(values.frameOpacity);
+ 
+    if(values.bannerOpacity <= 0 && bannervis){
+      banner.style.pointerEvents = 'none';
+      bannervis = false;
+    } else if (!bannervis && values.bannerOpacity > 0){
+      banner.style.pointerEvents = 'auto';
+      bannervis = true;
+    }
     bannerPainter(values.bannerOpacity);
+    framePainter(values.frameOpacity);
     imageMover(values.imgPosition);
   }
+
+  return function() { requestAnimationFrame(scr); };
 }

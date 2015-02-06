@@ -33,18 +33,41 @@ $banner-opacity: .95;
                                    percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
 }
 
-$footer-height: 8.5%;
+$footer-height: 10%;
 $footer-grad-height: 10%;
 $footer-grad-start: $footer-height;
 
 #footercontent {
   position: fixed;
-  width: $nav-width * .9;
-  left: (100% - $nav-width * .9) / 2;
+  width: $nav-width * .95;
+  left: (100% - $nav-width * .95) / 2;
   z-index: 3;
   height: $footer-height;
   bottom: 0%;
   border-top: 1px solid black;
+}
+
+#footercontent > * {
+  display: table;
+  table-layout: fixed;
+  position: absolute;
+  top: 0%;
+  height: 85%;
+  width: 100%;
+}
+
+#footercontent > * >  .dummy {
+  display: table-cell;
+}
+
+#footercontent > * >  .info {
+  height: 100%;
+  width: 25%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: .8em;
+  word-wrap: break-word;
 }
 
 #footerback{
