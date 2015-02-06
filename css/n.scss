@@ -21,12 +21,12 @@ $banner-opacity: .95;
   z-index: 2;
 }
 
-#bannercontent {
+#headercontent {
   @include banner-com();
   height: $banner-height;
 }
 
-#bannerback{
+#headerback{
   @include banner-com();
   height: $grad-start + $grad-height;
   @include two-all-linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
@@ -37,7 +37,7 @@ $footer-height: 10%;
 $footer-grad-height: 10%;
 $footer-grad-start: $footer-height;
 
-#footercontent {
+#footer {
   position: fixed;
   width: $nav-width * .95;
   left: (100% - $nav-width * .95) / 2;
@@ -47,7 +47,7 @@ $footer-grad-start: $footer-height;
   border-top: 1px solid black;
 }
 
-#footercontent > * {
+#footercontent {
   display: table;
   table-layout: fixed;
   position: absolute;
@@ -56,11 +56,11 @@ $footer-grad-start: $footer-height;
   width: 100%;
 }
 
-#footercontent > * >  .dummy {
+#footercontent > .dummy {
   display: table-cell;
 }
 
-#footercontent > * >  .info {
+#footercontent > .info {
   height: 100%;
   width: 25%;
   display: table-cell;
@@ -78,11 +78,17 @@ $footer-grad-start: $footer-height;
                                    percentage($footer-grad-start / ($footer-grad-height + $footer-grad-start)) , rgba(255, 255, 255, 0));
 }
 
+#headercontainer {
+  height: 70%;
+  top: 12%;
+  width: 100%;
+  position: absolute;
+}
+
 #logo {
   @include clickable();
   position: absolute;
-  top: 12%;
-  height: 70%;
+  height: 100%;
   z-index: 1;
   visibility: hidden;
 }
@@ -98,7 +104,7 @@ $footer-grad-start: $footer-height;
   width: $nav-width;
   left: (100% - $nav-width) / 2;
   display: table;
-  bottom: 31%;
+  bottom: 20%;
   padding-bottom: 3px;
 }
 
