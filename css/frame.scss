@@ -17,12 +17,13 @@ $frame-thickness: 2px;
   height: 100%;
 }
 
-#frame * {
+.vertical, .horizontal {
+  opacity: 0;
   position: absolute;
 }
 
-#frame > * {
-  opacity: 0;
+.framecom {
+  position: absolute;
 }
 
 //verticals
@@ -32,7 +33,7 @@ $frame-thickness: 2px;
   width: $frame-thickness;
 }
 
-#frame .vertical * {
+.vertical .framecom {
   width: 100%;
 }
 
@@ -67,12 +68,12 @@ $frame-thickness: 2px;
 
 //horizontals
 
-#frame .horizontal {
+.horizontal {
   width: 100%;
   height: $frame-thickness;
 }
 
-#frame .horizontal * {
+.horizontal .framecom {
   height: 100%;
 }
 

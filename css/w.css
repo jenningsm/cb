@@ -9,17 +9,18 @@
   width: 100%;
   height: 100%; }
 
-#frame * {
+.vertical, .horizontal {
+  opacity: 0;
   position: absolute; }
 
-#frame > * {
-  opacity: 0; }
+.framecom {
+  position: absolute; }
 
 #frame .vertical {
   height: 100%;
   width: 2px; }
 
-#frame .vertical * {
+.vertical .framecom {
   width: 100%; }
 
 #frame .vertical .first, .last {
@@ -50,11 +51,11 @@
 #rightvert {
   left: 50%; }
 
-#frame .horizontal {
+.horizontal {
   width: 100%;
   height: 2px; }
 
-#frame .horizontal * {
+.horizontal .framecom {
   height: 100%; }
 
 #frame .horizontal .first, .last {
