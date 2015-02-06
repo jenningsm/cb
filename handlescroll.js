@@ -25,18 +25,18 @@ function createScroller(images){
     if(curr !== values.itemNum){
       setImage(values.itemNum);
       curr = values.itemNum;
+    } else {
+      if(values.bannerOpacity <= 0 && bannervis){
+        banner.style.pointerEvents = 'none';
+        bannervis = false;
+      } else if (!bannervis && values.bannerOpacity > 0){
+        banner.style.pointerEvents = 'auto';
+        bannervis = true;
+      }
+      bannerPainter(values.bannerOpacity);
+      framePainter(values.frameOpacity);
+      imageMover(values.imgPosition);
     }
- 
-    if(values.bannerOpacity <= 0 && bannervis){
-      banner.style.pointerEvents = 'none';
-      bannervis = false;
-    } else if (!bannervis && values.bannerOpacity > 0){
-      banner.style.pointerEvents = 'auto';
-      bannervis = true;
-    }
-    bannerPainter(values.bannerOpacity);
-    framePainter(values.frameOpacity);
-    imageMover(values.imgPosition);
   }
 
   return function() { requestAnimationFrame(scr); };
