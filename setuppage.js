@@ -59,11 +59,9 @@ function switchPages(page){
   fade(fadeOut, false)(1);
 }
 
-
-
 function fade(transition, dir){
   return (function rec(x){
-    x += (x+.1) * .05 * (dir ? 1 : -1);
+    x += (dir ? .015 : .04) * (dir ? 1 : -1);
     transition(x);
     if((dir && x < 1) || (!dir && x > 0)){
       requestAnimationFrame(function() { rec(x) });
