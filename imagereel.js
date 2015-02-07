@@ -1,7 +1,7 @@
 
 function loadImage(src){
   var img = new Image();
-  img.addEventListener('load', function() { img = null;});
+  oneTimeListener(img, 'load', function() { img = null;});
   img.src = src;
 }
 
