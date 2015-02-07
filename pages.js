@@ -17,7 +17,7 @@ function fade(transition, dir){
 var stop = null;
 
 function switchPages(page){
-  var newPage = setupPage(page);
+  var newPage = workPage(page);
 
   var fadeOut = stop();
   stop = newPage[1];

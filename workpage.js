@@ -1,5 +1,5 @@
 
-function setupPage(page){
+function workPage(page){
 
   var scroller = createScroller(page);
 
