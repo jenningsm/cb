@@ -14,7 +14,7 @@ function bannerPainter(x){
 
 function createScroller(images){
 
-  setHeight(images.length);
+  var scrollValues = createScrollTracker(images.length);
   var setImage = imageReel(images);
   var curr = -1;
   var bannervis = true;
