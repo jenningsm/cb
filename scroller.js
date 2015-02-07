@@ -10,6 +10,7 @@ function framePainter(x) {
 }
 function bannerPainter(x){
    banner.style.opacity = x;
+   decoration.style.opacity = x;
 } 
 
 function createScroller(images){

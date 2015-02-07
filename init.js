@@ -26,4 +26,4 @@ window.addEventListener('resize', onResize);
 var imgElement = document.getElementById("image");
 var imgContainer = document.getElementById("bwork");
 var banner = document.getElementById("banner");
-
+var decoration = document.getElementById("imagedecoration");

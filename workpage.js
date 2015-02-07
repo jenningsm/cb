@@ -5,6 +5,7 @@ function workPage(page){
 
   function transition(x){
     imgElement.style.opacity = x;
+    decoration.style.opacity = x;
   }
 
   var timeout = null;
