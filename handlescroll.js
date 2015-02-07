@@ -25,6 +25,7 @@ function createScroller(images){
     if(curr !== values.itemNum){
       setImage(values.itemNum);
       curr = values.itemNum;
+      imageMover(0);
     } else {
       if(values.bannerOpacity <= 0 && bannervis){
         banner.style.pointerEvents = 'none';

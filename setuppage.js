@@ -41,7 +41,7 @@ page[0]();
 
 var outEvent = new Event('outfinished');
 
-/*function switchPages(page){
+function switchPages(page){
 
   var newPage = setupPage(page);
 
@@ -57,7 +57,7 @@ var outEvent = new Event('outfinished');
   oneTimeListener(document, 'outfinished', onFadeOut);
 
   fade(fadeOut, false)(1);
-}*/
+}
 
 
 
