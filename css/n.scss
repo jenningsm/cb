@@ -10,10 +10,13 @@ html, body {
 
 $nav-width: 70%;
 
-$banner-height: 20%;
+$header-height: .2;
+$header-top: .12;
 $grad-height: 17%;
-$grad-start: $banner-height - 2;
+$grad-start: ($header-height * 100%) - 2%;
 $banner-opacity: .95;
+$content-height: .7;
+$nav-bottom: .2;
 
 #banner {
   position: fixed;
@@ -23,10 +26,17 @@ $banner-opacity: .95;
 }
 
 #header {
-  height: $banner-height;
+  height: $header-height * 100%;
   width: 100%;
   position: absolute;
   z-index: 2;
+}
+
+#headercontent {
+  height: $content-height * 100%;
+  top: $header-top * 100%;
+  width: 100%;
+  position: absolute;
 }
 
 #headerback{
@@ -38,7 +48,7 @@ $banner-opacity: .95;
                                    percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
 }
 
-$footer-height: 10%;
+$footer-height: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height * 85%;
 $footer-grad-height: 10%;
 $footer-grad-start: $footer-height;
 
@@ -47,7 +57,7 @@ $footer-grad-start: $footer-height;
   width: $nav-width * .95;
   left: (100% - $nav-width * .95) / 2;
   z-index: 3;
-  height: $footer-height;
+  height:  $footer-height;
   bottom: 0%;
   border-top: 1px solid black;
 }
@@ -85,12 +95,6 @@ $footer-grad-start: $footer-height;
                                    percentage($footer-grad-start / ($footer-grad-height + $footer-grad-start)) , rgba(255, 255, 255, 0));
 }
 
-#headercontent {
-  height: 70%;
-  top: 12%;
-  width: 100%;
-  position: absolute;
-}
 
 #logo {
   @include clickable();
