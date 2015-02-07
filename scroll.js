@@ -27,7 +27,7 @@ var totalTime = pauseTime + 2 * (travelTime + accelTime);
 //the amount of time over which the banner at the top of the page fades out, only in the very beginning
 var bannerFadeOut = 1300;
 //offset for starting purposes
-var offset = (totalTime - pauseTime) * .5 - bannerFadeOut;
+var offset = (totalTime - pauseTime) * .5 - (bannerFadeOut+250);
 
 
 function setHeight(numImages){
@@ -67,7 +67,7 @@ function scrollValues(){
   }
 
   if(itemNum === 0 && pos <= totalTime * .5){
-    frameOpacity = ((scroll - offset) / bannerFadeOut);
+    frameOpacity = 1 - bannerOpacity;
   }
 
   return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosition' : translate, 'itemNum' : itemNum};
