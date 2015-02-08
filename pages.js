@@ -16,7 +16,10 @@ function fade(transition, dir){
 
 var stop = null;
 
-function switchPages(newPage){
+//maps is defined in setup.js
+
+function switchPages(switchTo){
+  var newPage = maps[switchTo]();
 
   var fadeOut = stop();
   stop = newPage[1];
