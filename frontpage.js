@@ -10,7 +10,7 @@ function frontPage(){
   function start(){
 
     scrollTo(0,0);
-    document.body.style.height = height;
+    document.body.style.height = 0;
     var frontImage = document.getElementById("frontimage").getBoundingClientRect();
     decoration.style.top = ((frontImage.top + frontImage.bottom - decoration.clientHeight) / 2) + 'px';
  
