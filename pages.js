@@ -15,23 +15,27 @@ function fade(transition, dir){
 
 
 var stop = null;
+var currPage = null;
 
 //maps is defined in setup.js
 
 function switchPages(switchTo){
-  var newPage = maps[switchTo]();
-
-  var fadeOut = stop();
-  stop = newPage[1];
-  var start = newPage[0];
-
-  var onFadeOut = function(){
-//    oneTimeListener(imgElement, 'load', function(){ fade(newPage[2], true)(0) });
-    start();
-    fade(newPage[2], true)(0);
+ if(switchTo !== currPage){
+    currPage = switchTo;
+    var newPage = maps[switchTo]();
+  
+    var fadeOut = stop();
+    stop = newPage[1];
+    var start = newPage[0];
+  
+    var onFadeOut = function(){
+  //    oneTimeListener(imgElement, 'load', function(){ fade(newPage[2], true)(0) });
+      start();
+      fade(newPage[2], true)(0);
+    }
+  
+    oneTimeListener(document, 'outfinished', onFadeOut);
+    fade(fadeOut, false)(1);
   }
-
-  oneTimeListener(document, 'outfinished', onFadeOut);
-  fade(fadeOut, false)(1);
 }
 
