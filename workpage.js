@@ -15,13 +15,17 @@ function workPage(page){
     timeout = setTimeout(scroller, 100);
   }
 
+  var decorationMove = function(){
+    decoration.style.top = ((height - decoration.clientHeight) / 2) + 'px';
+  }
+
   function start(){
     scroller();
-
-    decoration.style.top = ((height - decoration.clientHeight) / 2) + 'px';
+    decorationMove();
     
     window.addEventListener('scroll', scrollEvent);
     window.addEventListener('resize', scroller);
+    window.addEventListener('resize', decorationMove);
     imgElement.addEventListener('load', scroller);
 
     return transition;
@@ -31,6 +35,7 @@ function workPage(page){
     scrollTo(0, 0);
     window.removeEventListener('scroll', scrollEvent);
     window.removeEventListener('resize', scroller);
+    window.removeEventListener('resize', decorationMove);
     imgElement.removeEventListener('load', scroller);
 
     return transition;
