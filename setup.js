@@ -8,11 +8,26 @@ var photos = ["cbp8.jpg", "cbp2.jpg", "cbp3.jpg", "cbp4.jpg", "cbp5.jpg","cbp6.j
 var design = ["cbd6.jpg", "cbd2.jpg", "cbd3.jpg", "cbd4.jpg", "cbd5.jpg","cbd1.jpg","cbd7.jpg"];
 var illustration = ["cbi1.jpg", "cbi2.jpg", "cbi3.jpg", "cbi4.jpg", "cbi5.jpg","cbi6.jpg","cbi7.jpg","cbi8.jpg","cbi9.jpg","cbi10.jpg","cbi11.jpg"];
 
-loadImage(art[0]);
-loadImage(photos[0]);
-loadImage(design[0]);
-loadImage(illustration[0]);
+loadImage(imagepath + art[0]);
+loadImage(imagepath + photos[0]);
+loadImage(imagepath + design[0]);
+loadImage(imagepath + illustration[0]);
 
 var page = frontPage();
 var stop = page[1];
 page[0]();
+
+
+function firstFadeIn(){
+  var x = 0;
+  function futil(){
+    document.body.style.opacity = x;
+    if(x < 1){
+      x += .03;
+      requestAnimationFrame(futil);
+    }
+  }
+  requestAnimationFrame(futil);
+}
+
+window.addEventListener('load', firstFadeIn);
