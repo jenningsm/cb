@@ -16,16 +16,16 @@ function fade(transition, dir){
 
 var stop = null;
 
-function switchPages(page){
-  var newPage = workPage(page);
+function switchPages(newPage){
 
   var fadeOut = stop();
   stop = newPage[1];
   var start = newPage[0];
 
   var onFadeOut = function(){
-    oneTimeListener(imgElement, 'load', function(){ fade(newPage[2], true)(0) });
+//    oneTimeListener(imgElement, 'load', function(){ fade(newPage[2], true)(0) });
     start();
+    fade(newPage[2], true)(0);
   }
 
   oneTimeListener(document, 'outfinished', onFadeOut);

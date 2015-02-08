@@ -6,20 +6,31 @@
 </head>
 
 <body>
+
+   <div id="frontpage">
+     <div id="frontimagecon">
+       <img id="frontimage" src="./links/cba4.jpg">
+     </div>
+     <div id="frontinfo">
+       <div id="fronttext">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, 
+       </div>
+     </div>
+   </div>
      
    <div id="banner">
      <div id="headerback"></div>
      <div id="header">
        <div id="headercontent">
-         <div id="logo" href="index.html">
+         <div id="logo" onclick="switchPages(frontPage())" href="index.html">
           <img id="logoimage" src="./links/logo.png">
          </div>
       
          <div id="nav">
-          <div class="button"  onclick="switchPages(art);" href="art.html">art</div>
+          <div class="button"  onclick="switchPages(workPage(art));" href="art.html">art</div>
           <div class="button"  href="ill.html">illustration</div>
           <div id="dummy"></div>
-          <div class="button" onclick="switchPages(photos);" href="pho.html">photography</div>
+          <div class="button" onclick="switchPages(workPage(photos));" href="pho.html">photography</div>
           <div class="button"  href="design.html">design</div>
          </div>
        </div>
@@ -60,6 +71,7 @@
    <script src="scrollTracker.js"></script>
    <script src="scroller.js"></script>
    <script src="workpage.js"></script>
+   <script src="frontpage.js"></script>
    <script src="pages.js"></script>
    <script src="setup.js"></script>
 </body></html>

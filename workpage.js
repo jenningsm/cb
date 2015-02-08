@@ -17,6 +17,8 @@ function workPage(page){
 
   function start(){
     scroller();
+
+    decoration.style.top = ((height - decoration.clientHeight) / 2) + 'px';
     
     window.addEventListener('scroll', scrollEvent);
     window.addEventListener('resize', scroller);

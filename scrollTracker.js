@@ -31,6 +31,7 @@ function createScrollTracker(numImages){
 
   var bodyHeight = (height + (1 + numImages) * totalTime - totalTime * .5 - offset + endPause);
   document.body.style.height = bodyHeight + "px";
+  document.dispatchEvent(scrollbar);
 
   scrollTo(0, 0);
   var cycled = false;

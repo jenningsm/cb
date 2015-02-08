@@ -222,6 +222,39 @@ html, body {
     display: block;
     margin: 0 auto; }
 
+#frontpage {
+  top: 13.6%;
+  height: 74.84%;
+  width: 100%;
+  position: absolute; }
+
+#frontinfo {
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%; }
+
+#fronttext {
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+#frontimagecon {
+  position: absolute;
+  top: 0;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  #frontimagecon img {
+    max-width: 75%;
+    max-height: 80%; }
+
 #imagedecoration {
   height: 6%;
   width: 100%;

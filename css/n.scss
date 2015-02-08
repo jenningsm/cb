@@ -147,6 +147,45 @@ $footer-grad-start: $footer-height;
   }
 }
 
+$front-image: 60%;
+$front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height * 100%;
+
+#frontpage {
+  top: $front-top;
+  height: 100% - $front-top - $footer-height;
+  width: 100%;
+  position: absolute;
+ 
+}
+#frontinfo {
+  position: absolute;
+  top: $front-image;
+  height: 100% - $front-image;
+  width: 100%;
+}
+#fronttext{
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#frontimagecon {
+  position: absolute;
+  top: 0;
+  height: $front-image;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 75%;
+    max-height: 80%;
+  }
+}
 
 $decoration-height: .06;
 $d-end-color: #FBFBFB;
