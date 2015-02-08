@@ -28,6 +28,7 @@ function workPage(page){
   }
 
   function stop(){
+    scrollTo(0, 0);
     window.removeEventListener('scroll', scrollEvent);
     window.removeEventListener('resize', scroller);
     imgElement.removeEventListener('load', scroller);
