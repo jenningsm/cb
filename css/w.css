@@ -175,6 +175,7 @@ html, body {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+  pointer-events: none;
   position: absolute;
   height: 100%;
   z-index: 0;
@@ -182,6 +183,7 @@ html, body {
   width: 100%; }
 
 #logo img {
+  pointer-events: auto;
   max-height: 100%;
   max-width: 100%; }
 

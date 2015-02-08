@@ -98,6 +98,7 @@ $footer-grad-start: $footer-height;
 
 #logo {
   @include clickable();
+  pointer-events: none;
   position: absolute;
   height: 100%;
   z-index: 0;
@@ -106,6 +107,7 @@ $footer-grad-start: $footer-height;
 }
 
 #logo img {
+  pointer-events: auto;
   max-height: 100%;
   max-width: 100%;
 }
