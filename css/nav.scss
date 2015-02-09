@@ -1,0 +1,40 @@
+
+#logo {
+  @include clickable();
+  pointer-events: none;
+  position: absolute;
+  height: 100%;
+  z-index: 0;
+  text-align: center;
+  width: 100%;
+}
+
+#logo img {
+  pointer-events: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#nav {
+  position: absolute;
+  border-bottom: 1px solid black;
+  width: $nav-width;
+  left: (100% - $nav-width) / 2;
+  display: table;
+  bottom: 20%;
+  padding-bottom: 3px;
+  pointer-events: none;
+}
+
+#dummy{
+  display: table-cell;
+  width: 20%;
+}  
+
+#nav .button {
+  @include clickable();
+  pointer-events: auto;
+  width: 15%;
+  display: table-cell;
+  text-align: center;
+}

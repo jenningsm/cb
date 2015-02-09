@@ -1,0 +1,14 @@
+
+#bwork{
+  position: fixed;
+  top: 100%;
+  width: 100%;
+  z-index: 0;
+
+  img {
+    max-height: 80vh;
+    max-width: 80vw;
+    display: block;
+    margin: 0 auto;
+  }
+}

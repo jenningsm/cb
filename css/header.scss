@@ -1,0 +1,28 @@
+
+$grad-height: 17%;
+$grad-start: ($header-height * 100%) - 2%;
+
+#header {
+  height: $header-height * 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+
+#headercontent {
+  height: $content-height * 100%;
+  top: $header-top * 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#headerback{
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  height: $grad-start + $grad-height;
+  @include two-all-linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+                                   percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
+}
+
+@import 'nav';

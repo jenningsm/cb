@@ -1,0 +1,17 @@
+
+
+#banner {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+$nav-width: 70%;
+$banner-opacity: .95;
+
+@import 'header';
+
+@import 'footer';
+
+

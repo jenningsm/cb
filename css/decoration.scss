@@ -1,0 +1,30 @@
+
+$decoration-height: .06;
+$d-end-color: #FBFBFB;
+$d-mid-color: #E0E0E0;
+$d-fade-point: 40%;
+
+@mixin decoration(){
+  @include all-general-gradient(left, $d-end-color, $d-mid-color $d-fade-point, $d-mid-color (100% - $d-fade-point), $d-end-color );
+  height: 45%;
+  width: 100%;
+  position: absolute;
+}
+
+#imagedecoration {
+  height: $decoration-height * 100%;
+  width: 100%;
+  top: ((1 - $decoration-height) / 2) * 100%;
+  position: fixed;
+  z-index: -1;
+
+  .top {
+    @include decoration();
+    top: 0%;
+  }
+
+  .bottom {
+    @include decoration();
+    bottom: 0%;
+  }
+}
