@@ -1,5 +1,4 @@
 
-var outEvent = new Event('outfinished');
 
 function fade(transition, dir){
   return (function rec(x){
@@ -8,6 +7,7 @@ function fade(transition, dir){
     if((dir && x < 1) || (!dir && x > 0)){
       requestAnimationFrame(function() { rec(x) });
     } else {
+      var outEvent = (dir ? new Event('fadedIn') : new Event('fadedOut'));
       document.dispatchEvent(outEvent);
     }
   });
@@ -29,12 +29,13 @@ function switchPages(switchTo){
       start();
       fade(newPage.transition, true)(0);
     }
-    oneTimeListener(document, 'outfinished', onFadeOut);
+    oneTimeListener(document, 'fadedOut', onFadeOut);
 
     if(stop !== null){
       var fadeOut = stop();
       fade(fadeOut, false)(1);
     } else {
+      var outEvent = new Event("fadedOut");
       document.dispatchEvent(outEvent);
     }
     stop = newPage.stop;
