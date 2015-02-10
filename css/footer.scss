@@ -13,6 +13,7 @@ $footer-grad-start: $footer-height;
 }
 
 #footercontent {
+  pointer-events: auto;
   display: table;
   table-layout: fixed;
   position: absolute;
@@ -41,6 +42,6 @@ $footer-grad-start: $footer-height;
   width: 100%;
   height: $footer-grad-start + $footer-grad-height;
   bottom: 0%;
-  @include two-all-linear-gradient(bottom, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+  @include linear-gradient(bottom, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity)
                                    percentage($footer-grad-start / ($footer-grad-height + $footer-grad-start)) , rgba(255, 255, 255, 0));
 }

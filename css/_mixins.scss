@@ -1,23 +1,9 @@
 
-@mixin all-general-gradient($argument...){
+@mixin linear-gradient($argument...){
   background: -webkit-linear-gradient($argument); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient($argument); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient($argument); /* For Firefox 3.6 to 15 */
   background: linear-gradient($argument); /* Standard syntax */
-}
-
-@mixin all-linear-gradient($start, $end){
-  background: -webkit-linear-gradient($start, $end); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient($start, $end); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient($start, $end); /* For Firefox 3.6 to 15 */
-  background: linear-gradient($start, $end); /* Standard syntax */
-}
-
-@mixin two-all-linear-gradient($dir, $start, $mid, $midpoint, $end){
-  background: -webkit-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: -moz-linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
-  background: linear-gradient($dir, $start, $mid $midpoint, $end); /* For Safari 5.1 to 6.0 */
 }
 
 @mixin frame-linear-gradient($orientation, $color){

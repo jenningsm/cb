@@ -5,7 +5,7 @@ $d-mid-color: #E0E0E0;
 $d-fade-point: 40%;
 
 @mixin decoration(){
-  @include all-general-gradient(left, $d-end-color, $d-mid-color $d-fade-point, $d-mid-color (100% - $d-fade-point), $d-end-color );
+  @include linear-gradient(left, $d-end-color, $d-mid-color $d-fade-point, $d-mid-color (100% - $d-fade-point), $d-end-color );
   height: 45%;
   width: 100%;
   position: absolute;

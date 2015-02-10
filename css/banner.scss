@@ -5,9 +5,9 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  pointer-events: none;
 }
 
-$nav-width: 70%;
 $banner-opacity: .95;
 
 @import 'header';

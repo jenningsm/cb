@@ -7,23 +7,24 @@ $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height
   height: 100% - $front-top - $footer-height;
   width: 100%;
   position: absolute;
- 
+  overflow: hidden; 
 }
 #frontinfo {
   position: absolute;
   top: $front-image;
   height: 100% - $front-image;
-  width: 100%;
-}
-#fronttext{
-  position: absolute;
   left: 25%;
   width: 50%;
-  text-align: justify;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: table;
+  padding: 1%;
+  box-sizing: padding-box;
 }
+#fronttext{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
 #frontimagecon {
   position: absolute;
   top: 0;
@@ -34,7 +35,18 @@ $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height
   justify-content: center;
 
   img {
-    max-width: 75%;
     max-height: 80%;
+    max-width: 100%;
   }
+}
+
+#line {
+  $this-width: 45%;
+  height: 1px;
+  top: $front-image;
+  position: absolute;
+  width: $this-width;
+  left: (100% - $this-width) * .5;
+  $grad-point: 12%;
+  @include linear-gradient(left, white, black $grad-point, black (100% - $grad-point), white);
 }

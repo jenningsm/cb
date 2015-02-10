@@ -21,7 +21,7 @@ $grad-start: ($header-height * 100%) - 2%;
   position: absolute;
   z-index: 1;
   height: $grad-start + $grad-height;
-  @include two-all-linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity),
+  @include linear-gradient(top, rgba(255, 255, 255, $banner-opacity), rgba(255, 255, 255, $banner-opacity)
                                    percentage($grad-start / ($grad-height + $grad-start)) , rgba(255, 255, 255, 0));
 }
 

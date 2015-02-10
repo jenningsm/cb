@@ -2,7 +2,8 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 1; }
+  z-index: 1;
+  pointer-events: none; }
 
 #header {
   height: 20%;
@@ -24,11 +25,11 @@
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */
+  /* For Firefox 3.6 to 15 */
   background: linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */ }
+  /* Standard syntax */ }
 
 #logo {
   cursor: pointer;
@@ -87,6 +88,7 @@
   border-top: 1px solid black; }
 
 #footercontent {
+  pointer-events: auto;
   display: table;
   table-layout: fixed;
   position: absolute;
@@ -115,11 +117,11 @@
   background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */
+  /* For Firefox 3.6 to 15 */
   background: linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
-  /* For Safari 5.1 to 6.0 */ }
+  /* Standard syntax */ }
 
 #bwork {
   position: fixed;
@@ -141,7 +143,8 @@
 #frame {
   position: fixed;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  pointer-events: none; }
 
 .vertical, .horizontal {
   opacity: 0;
@@ -257,22 +260,23 @@
   top: 13.6%;
   height: 74.84%;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  overflow: hidden; }
 
 #frontinfo {
   position: absolute;
   top: 60%;
   height: 40%;
-  width: 100%; }
-
-#fronttext {
-  position: absolute;
   left: 25%;
   width: 50%;
-  text-align: justify;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+  display: table;
+  padding: 1%;
+  box-sizing: padding-box; }
+
+#fronttext {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
 
 #frontimagecon {
   position: absolute;
@@ -283,8 +287,23 @@
   align-items: center;
   justify-content: center; }
   #frontimagecon img {
-    max-width: 75%;
-    max-height: 80%; }
+    max-height: 80%;
+    max-width: 100%; }
+
+#line {
+  height: 1px;
+  top: 60%;
+  position: absolute;
+  width: 45%;
+  left: 27.5%;
+  background: -webkit-linear-gradient(left, white, black 12%, black 88%, white);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, white, black 12%, black 88%, white);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, white, black 12%, black 88%, white);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(left, white, black 12%, black 88%, white);
+  /* Standard syntax */ }
 
 body {
   opacity: 0; }

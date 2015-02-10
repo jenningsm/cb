@@ -3,6 +3,7 @@ $header-height: .2;
 $header-top: .12;
 $content-height: .7;
 $nav-bottom: .2;
+$nav-width: 70%;
 $footer-height: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height * 85%;
 
 @import 'mixins';
