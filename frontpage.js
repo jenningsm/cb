@@ -35,7 +35,7 @@ function frontPage(){
     return transition;
   }
 
-  return [start, stop, transition];
+  return {'start' : start, 'stop' : stop, 'transition' : transition};
 }
 
 

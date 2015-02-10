@@ -1,4 +1,6 @@
 
+var root = '/cb';
+
 //the path to the images
 var imagepath = "./links/";
 
@@ -12,18 +14,29 @@ var maps = { 'art' : function() { return workPage(art); },
              'illustration' : function() { return workPage(illustration) },
              'design' : function() { return workPage(design) },
              'photography' : function() { return workPage(photos) },
-             'frontpage' : function() { return frontPage(); }};
+             'index' : function() { return frontPage(); }};
 
 loadImage(imagepath + art[0]);
 loadImage(imagepath + photos[0]);
 loadImage(imagepath + design[0]);
 loadImage(imagepath + illustration[0]);
 
-var page = frontPage();
-var stop = page[1];
-page[0]();
-page[2](1);
 
+function onPopState(e){
+  switchPages(e.state.page);
+}
+
+window.addEventListener('popstate', onPopState);
+
+var mypage;
+var mypath = window.location.pathname.split('/');
+if(!(mypath[mypath.length-1] in maps)){
+  mypage = 'index';
+} else {
+  mypage = mypath[mypath.length-1];
+}
+
+toPage(mypage);
 
 function firstFadeIn(){
   var x = 0;

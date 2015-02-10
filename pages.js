@@ -23,19 +23,32 @@ function switchPages(switchTo){
  if(switchTo !== currPage){
     currPage = switchTo;
     var newPage = maps[switchTo]();
-  
-    var fadeOut = stop();
-    stop = newPage[1];
-    var start = newPage[0];
-  
+    var start = newPage.start;
+
     var onFadeOut = function(){
-  //    oneTimeListener(imgElement, 'load', function(){ fade(newPage[2], true)(0) });
       start();
-      fade(newPage[2], true)(0);
+      fade(newPage.transition, true)(0);
     }
-  
     oneTimeListener(document, 'outfinished', onFadeOut);
-    fade(fadeOut, false)(1);
+
+    if(stop !== null){
+      var fadeOut = stop();
+      fade(fadeOut, false)(1);
+    } else {
+      document.dispatchEvent(outEvent);
+    }
+    stop = newPage.stop;
   }
 }
 
+var first = true;
+
+function toPage(page){
+  if(first){
+    history.replaceState({'page' : page }, "", page === 'index' ? root : root + '/' + page);
+    first = false;
+  } else {
+    history.pushState({'page' : page }, "", page === 'index' ? root : root + '/' + page);
+  }
+  switchPages(page);
+}
