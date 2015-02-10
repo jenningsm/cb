@@ -8,9 +8,13 @@ function frontPage(){
     decoration.style.top = ((fimgbounds.top + fimgbounds.bottom - decoration.clientHeight) / 2) + 'px';
   }
 
+  var tback = document.getElementById("headerback");
+  var bback = document.getElementById("footerback");
   function transition(x){
     front.style.opacity = x;
     decoration.style.opacity = x;
+    tback.style.opacity = 1 - x;
+    bback.style.opacity = 1 - x;
   }
 
   function start(){

@@ -22,6 +22,7 @@ loadImage(imagepath + illustration[0]);
 var page = frontPage();
 var stop = page[1];
 page[0]();
+page[2](1);
 
 
 function firstFadeIn(){
