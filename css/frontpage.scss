@@ -1,5 +1,5 @@
 
-$front-image: 60%;
+$front-image: 67%;
 $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height * 100%;
 
 #frontpage {
@@ -10,11 +10,10 @@ $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height
   overflow: hidden; 
 }
 #frontinfo {
+  @include centered-absolute(58%);
   position: absolute;
   top: $front-image;
   height: 100% - $front-image;
-  left: 25%;
-  width: 50%;
   display: table;
   padding: 1%;
   box-sizing: padding-box;
@@ -41,12 +40,12 @@ $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height
 }
 
 #line {
-  $this-width: 45%;
+  @include centered-absolute(50%);
   height: 1px;
   top: $front-image;
   position: absolute;
-  width: $this-width;
-  left: (100% - $this-width) * .5;
-  $grad-point: 12%;
-  @include linear-gradient(left, white, black $grad-point, black (100% - $grad-point), white);
+  $grad-point: 40%;
+  $color: #808080;
+  @include linear-gradient(left, white, $color $grad-point, $color (100% - $grad-point), white);
 }
+
