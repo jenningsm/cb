@@ -10,19 +10,89 @@ $front-top: ((1 - $nav-bottom) * $content-height + $header-top) * $header-height
   overflow: hidden;
   opacity: 0;
 }
-#frontinfo {
-  @include centered-absolute(58%);
-  position: absolute;
+
+#frontinfo{
   top: $front-image;
   height: 100% - $front-image;
+  position: absolute;
+  width: 100%;
+}
+
+ $frame-width: 70%;
+ $frame-height: 70%;
+
+#frontframe {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#frontframed {
+  @include centered-absolute(58%);
+  position: absolute;
   display: table;
-  padding: 1%;
+  table-layout: fixed;
+  width: $frame-width;
+  height: $frame-height;
+  top: (100% - $frame-height) / 2;
+  left: (100% - $frame-width) / 2;
   box-sizing: padding-box;
 }
+
+
+$frame-thickness: 2px;
+@mixin frame-part($orientation){
+  position: absolute;
+  $way: null;
+  $dim: null;
+  @if $orientation {
+    height: 2px;
+    width: 100%;
+    $way: left;
+    $dim: $frame-width;
+  } @else {
+    height: 100%;
+    width: 2px;
+    $way: top;
+    $dim: $frame-height;
+  }
+  $grad-point: ((100% - $dim) / 2) * .67;
+  @include linear-gradient($way, white, $frame-color $grad-point, $frame-color (100% - $grad-point), white);
+}
+
+#topfront {
+  @include frame-part(true);
+  top: (100% - $frame-height) / 2;
+}
+
+#bottomfront {
+  @include frame-part(true);
+  bottom: (100% - $frame-height) / 2;
+}
+
+#leftfront {
+  @include frame-part(false);
+  left: (100% - $frame-height) / 2;
+}
+
+#rightfront {
+  @include frame-part(false);
+  right: (100% - $frame-height) / 2;
+}
+
 #fronttext{
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+#frontframed::after, #frontframed::before{
+  content: '';
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  height: 20%;
+  width: 10%;
 }
 
 #frontimagecon {
