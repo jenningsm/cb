@@ -23,7 +23,7 @@ loadImage(imagepath + illustration[0]);
 
 
 function onPopState(e){
-  switchPages(e.state.page);
+  backToPage(e.state.page);
 }
 
 window.addEventListener('popstate', onPopState);
