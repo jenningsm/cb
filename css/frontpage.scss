@@ -19,7 +19,7 @@ $img-percent: 80%;
   width: 100%;
 }
 
- $frame-width: 70%;
+ $frame-width: 60%;
  $frame-height: 70%;
 
 #frontframe {
@@ -85,8 +85,8 @@ $frame-thickness: 2px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  width: 70%;
-  left: 15%;
+  width: 80%;
+  left: 10%;
   overflow: hidden;
   max-height: 80%;
 }
