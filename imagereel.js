@@ -16,9 +16,7 @@ function imageReel(images){
 
       //make sure the next and previous images are loaded so they're
       //  ready to go when we scroll to them
-      if(num != images.length - 1){
-         loadImage(imagepath+images[num+1]);
-      }
+       loadImage(imagepath+images[(num+1) % images.length]);
       if(num !== 0){
         loadImage(imagepath+images[num-1]);
       }
