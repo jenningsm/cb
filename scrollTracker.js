@@ -1,7 +1,7 @@
 
 //to simulate newtonian motion, we use the current yoffset of the page as the current time
 
-var speed = .0005;
+var speed = .0008;
 //the distance over which the image will accelerate (or decelerate) as the page scrolls (as a porportion of the viewport height)
 var accelDist = .5 * .5;
 //aceleration value
@@ -13,7 +13,7 @@ var travelDist = .5 - accelDist;
 //time over which the the img travels at a constant velocity
 var travelTime = travelDist / speed;
 //time spent with the image in the center, not moving at all
-var pauseTime = 700;
+var pauseTime = 550;
 //total time, from when the img enters the page to when it has exited
 var totalTime = pauseTime + 2 * (travelTime + accelTime);
 //the amount of time over which the banner at the top of the page fades out, only in the very beginning
@@ -24,7 +24,7 @@ var firstPause = 300;
 var offset = (totalTime - pauseTime) * .5 - (bannerFadeOut+firstPause);
 
 //the amount to scroll after we reach the banner at the end before cycling back to the beginning
-var endPause = 250;
+var endPause = 150;
 
 
 function createScrollTracker(numImages){
