@@ -4,7 +4,7 @@ function workPage(page){
   var scroller = createScroller(page);
 
   var imgpr = .5;
-  var decpr = .7;
+  var decpr = 1;
   function transition(x){
     if(x <= imgpr){
       imgElement.style.opacity = x / imgpr;

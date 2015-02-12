@@ -10,11 +10,31 @@ function frontPage(){
 
   var tback = document.getElementById("headerback");
   var bback = document.getElementById("footerback");
-  function transition(x){
+/*  function transition(x){
     front.style.opacity = x;
     decoration.style.opacity = x;
     tback.style.opacity = 1 - x;
     bback.style.opacity = 1 - x;
+  }*/
+
+  var frontpr = .5;
+  var decpr = 1;
+  function transition(x){
+    if(x <= frontpr){
+      front.style.opacity = x / frontpr;
+      tback.style.opacity = 1 - x / frontpr;
+      bback.style.opacity = 1 - x / frontpr;
+    } else {
+      front.style.opacity = 1;
+      tback.style.opacity = 0;
+      bback.style.opacity = 0;
+    }
+
+    if(x > 1 - decpr){
+      decPainter(1, (x - (1 - decpr)) / decpr);
+    } else {
+      decPainter(1, 0);
+    }
   }
 
   function start(){
