@@ -84,6 +84,9 @@ function createScrollTracker(numImages){
       bannerOpacity = frameOpacity;
       frameOpacity = 0;
     }
+
+    bannerOpacity = Math.min(1, Math.max(0, bannerOpacity));
+    frameOpacity = Math.min(1, Math.max(0, frameOpacity));
   
     return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosition' : translate, 'itemNum' : itemNum % numImages};
   }

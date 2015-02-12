@@ -3,9 +3,20 @@ function workPage(page){
 
   var scroller = createScroller(page);
 
+  var imgpr = .5;
+  var decpr = .7;
   function transition(x){
-    imgElement.style.opacity = x;
-    decoration.style.opacity = x;
+    if(x <= imgpr){
+      imgElement.style.opacity = x / imgpr;
+    } else {
+      imgElement.style.opacity = 1;
+    }
+
+    if(x > 1 - decpr){
+      decoration.style.opacity = (x - (1 - decpr)) / decpr;
+    } else {
+      decoration.style.opacity = 0;
+    }
   }
 
   var timeout = null;

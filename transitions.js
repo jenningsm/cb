@@ -1,5 +1,5 @@
 
-var speedscale = 1.7;
+var speedscale = .85;
 function fade(transition, dir, cb){
   return (function rec(x){
     x += (dir ? .015 : .04) * (dir ? 1 : -1) * speedscale;
