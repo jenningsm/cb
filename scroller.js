@@ -11,7 +11,7 @@ function framePainter(x) {
 }
 function bannerPainter(x){
    banner.style.opacity = x;
-   decoration.style.opacity = x;
+   decPainter(0, x);
 } 
 
 function createScroller(images){

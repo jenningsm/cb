@@ -13,9 +13,9 @@ function workPage(page){
     }
 
     if(x > 1 - decpr){
-      decoration.style.opacity = (x - (1 - decpr)) / decpr;
+      decPainter(1, (x - (1 - decpr)) / decpr);
     } else {
-      decoration.style.opacity = 0;
+      decPainter(1, 0);
     }
   }
 
