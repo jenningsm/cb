@@ -72,12 +72,12 @@ $frame-thickness: 2px;
 
 #leftfront {
   @include frame-part(false);
-  left: (100% - $frame-height) / 2;
+  left: (100% - $frame-width) / 2;
 }
 
 #rightfront {
   @include frame-part(false);
-  right: (100% - $frame-height) / 2;
+  right: (100% - $frame-width) / 2;
 }
 
 #fronttext{
