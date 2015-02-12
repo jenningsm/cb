@@ -265,7 +265,7 @@
   opacity: 0; }
 
 #frontinfo {
-  top: 67%;
+  top: 60.3%;
   height: 33%;
   position: absolute;
   width: 100%; }
@@ -291,13 +291,13 @@
   position: absolute;
   height: 2px;
   width: 100%;
-  background: -webkit-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -webkit-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -o-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -moz-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* Standard syntax */
   top: 15%; }
 
@@ -305,13 +305,13 @@
   position: absolute;
   height: 2px;
   width: 100%;
-  background: -webkit-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -webkit-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -o-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -moz-linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(left, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: linear-gradient(left, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* Standard syntax */
   bottom: 15%; }
 
@@ -319,13 +319,13 @@
   position: absolute;
   height: 100%;
   width: 2px;
-  background: -webkit-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -webkit-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -o-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -moz-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* Standard syntax */
   left: 15%; }
 
@@ -333,13 +333,13 @@
   position: absolute;
   height: 100%;
   width: 2px;
-  background: -webkit-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -webkit-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -o-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: -moz-linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(top, white, #c0c0c0 10.05%, #c0c0c0 89.95%, white);
+  background: linear-gradient(top, white, white 3.35%, #c0c0c0 10.05%, #c0c0c0 89.95%, white 96.65%, white);
   /* Standard syntax */
   right: 15%; }
 
@@ -368,23 +368,9 @@
     max-height: 80%;
     max-width: 100%; }
 
-#line {
-  width: 50%;
-  left: 25%;
-  height: 1px;
-  top: 67%;
-  position: absolute;
-  background: -webkit-linear-gradient(left, white, #808080 40%, #808080 60%, white);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(left, white, #808080 40%, #808080 60%, white);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(left, white, #808080 40%, #808080 60%, white);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(left, white, #808080 40%, #808080 60%, white);
-  /* Standard syntax */ }
-
 body {
-  opacity: 0; }
+  opacity: 0;
+  overflow-y: scroll; }
 
 html, body {
   padding: 0;

@@ -1,8 +1,8 @@
 
-
+var speedscale = 1.7;
 function fade(transition, dir, cb){
   return (function rec(x){
-    x += (dir ? .015 : .04) * (dir ? 1 : -1);
+    x += (dir ? .015 : .04) * (dir ? 1 : -1) * speedscale;
     transition(x);
     if((dir && x < 1) || (!dir && x > 0)){
       requestAnimationFrame(function() { rec(x) });
