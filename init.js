@@ -9,11 +9,8 @@ function onResize(){
   width = document.documentElement.clientWidth;
 }
 
-var scrollbar = new Event('scrollbar');
-
 window.addEventListener('load', onResize);
 window.addEventListener('resize', onResize);
-document.addEventListener('scrollbar', onResize);
 
 var imgElement = document.getElementById("image");
 var imgContainer = document.getElementById("bwork");

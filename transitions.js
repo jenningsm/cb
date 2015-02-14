@@ -35,7 +35,7 @@ function switchPages(switchTo){
 }
 
 
-//go to a page
+//go to a page, handles history as well
 var currPage = null;
 function toPage(page){
   function pg(cb){

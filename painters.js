@@ -22,3 +22,19 @@ function decPainter(channel, x){
     last = op;
   }
 }
+
+
+function imageMover(x){
+  imgContainer.style.transform = "translate3d(0, -" + x * (height + imgElement.clientHeight) + "px, 0)";
+}
+
+function framePainter(x) { 
+  lv.style.opacity = x; 
+  rv.style.opacity = x;
+  bh.style.opacity = x;
+  th.style.opacity = x;
+}
+function bannerPainter(x){
+   banner.style.opacity = x;
+   decPainter(0, x);
+} 

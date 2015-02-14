@@ -9,6 +9,7 @@ function imageReel(images){
 
   loadImage(imagepath+images[0]);
   loadImage(imagepath+images[1]);
+  loadImage(imagepath+images[images.length - 1]);
 
   return function (num){
     if(num >= 0 && num < images.length) {

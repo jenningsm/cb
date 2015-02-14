@@ -11,84 +11,81 @@ var accelTime = Math.sqrt(2 * accelDist / accel);
 //distance over which the img travels at constant velocity
 var travelDist = .5 - accelDist;
 //time over which the the img travels at a constant velocity
-var travelTime = travelDist / speed;
-//time spent with the image in the center, not moving at all
-var pauseTime = 550;
+var constTime = travelDist / speed;
 //total time, from when the img enters the page to when it has exited
-var totalTime = pauseTime + 2 * (travelTime + accelTime);
-//the amount of time over which the banner at the top of the page fades out, only in the very beginning
-var bannerFadeOut = 1300;
-//the amount to scroll after the banner first fades out before the first image starts to move away
-var firstPause = 300;
-//offset for starting purposes
-var offset = (totalTime - pauseTime) * .5 - (bannerFadeOut+firstPause);
-
-//the amount to scroll after we reach the banner at the end before cycling back to the beginning
-var endPause = 150;
-
+var totalTime = 2 * (constTime + accelTime);
 
 function createScrollTracker(numImages){
 
-  var bodyHeight = (height + (1 + numImages) * totalTime - totalTime * .5 - offset + endPause);
-  document.body.style.height = bodyHeight + "px";
-  document.dispatchEvent(scrollbar);
+  var bannerOpacity;
+  var frameOpacity;
+  var imgPosition;
 
-  scrollTo(0, 0);
-  var cycled = false;
+  return function(itemNum, x){
 
-  return function(){
+    x = Math.max(0, Math.min(1, x));
 
-    var windowOffset = window.pageYOffset;
-    if(windowOffset >= bodyHeight - height){
-      scrollTo(1,0);
-      cycled = true;
-    }
-    if(windowOffset === 0 && cycled){
-      scrollTo(0, bodyHeight - height -1);
-    }
-
-    var scroll = windowOffset + offset;
-    var pos = scroll % (totalTime);
-    var itemNum = Math.max(Math.floor(scroll / totalTime), 0);
-  
-    var bannerOpacity = 0;
-    if(itemNum === 0){
-      bannerOpacity = 1 - windowOffset / bannerFadeOut;
-      pos = Math.max(totalTime * .5, pos);
-    }
-  
-    var translate;
-    var frameOpacity;
-  
-    if(pos < travelTime){
-      translate = pos * speed;
-      frameOpacity = 0;
-    }else if (pos < travelTime + accelTime){
-      translate = .5 - .5 * accel * Math.pow(accelTime + travelTime - pos , 2);
-      frameOpacity = (pos - travelTime) / accelTime;
-    } else if(pos < travelTime + accelTime + pauseTime){
-      translate = .5;
-      frameOpacity = 1;
-    } else if(pos < totalTime - travelTime){
-      translate = .5 + .5 * accel * Math.pow(pos - (accelTime + travelTime + pauseTime) , 2);
-      frameOpacity = (1 - (pos - (travelTime + accelTime + pauseTime)) / accelTime);
-    } else {
-      translate = 1 - (totalTime - pos) * speed;
-      frameOpacity = 0;
-    }
-  
-    if(itemNum === 0 && pos <= totalTime * .5){
-      frameOpacity = 1 - bannerOpacity;
-    }
-    if(itemNum === numImages){
-      bannerOpacity = frameOpacity;
-      frameOpacity = 0;
+    if(itemNum === 0){ //fade the banner out to images
+       imgPosition = imgTracker(Math.max(.5, x));
+       if(x < .5){
+         bannerOpacity = 1 - 2 * x;
+         frameOpacity = 1 - bannerOpacity;
+       } else {
+         bannerOpacity = 0;
+         frameOpacity = frameTracker(x);
+       }
+    } else if ( itemNum > 0 && itemNum != numImages){//run the images
+       imgPosition = imgTracker(x);
+       frameOpacity = frameTracker(x);
+       bannerOpacity = 0;
+    } else {//fade the banner back in, x should never be greater than .5 in this instance, after .5 it should wrap back to top
+       bannerOpacity = 2 * x;
+       frameOpacity = 0;
+       imgPosition = imgTracker(x);
     }
 
     bannerOpacity = Math.min(1, Math.max(0, bannerOpacity));
     frameOpacity = Math.min(1, Math.max(0, frameOpacity));
-  
-    return {'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity, 'imgPosition' : translate, 'itemNum' : itemNum % numImages};
+    imgPosition = Math.min(1, Math.max(0, imgPosition));
+
+    return {'imgPosition' : imgPosition, 'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity };
+     
   }
+}
+
+
+function imgTracker(through){
+  var translate;
+
+  var pos = through * totalTime;
+
+  if(pos < constTime){
+    translate = pos * speed;
+  }else if (pos < constTime + accelTime){
+    translate = .5 - .5 * accel * Math.pow(accelTime + constTime - pos , 2);
+  } else if(pos < totalTime - constTime){
+    translate = .5 + .5 * accel * Math.pow(pos - (accelTime + constTime) , 2);
+  } else {
+    translate = 1 - (totalTime - pos) * speed;
+  }
+
+  return translate;
+}
+
+function frameTracker(through){
+  var frameOpacity;
+
+  var pos = through * totalTime;
+
+  if(pos < constTime){
+    frameOpacity = 0;
+  }else if (pos < constTime + accelTime){
+    frameOpacity = (pos - constTime) / accelTime;
+  } else if(pos < totalTime - constTime){
+    frameOpacity = 1 - ((pos - (constTime + accelTime)) / accelTime);
+  } else {
+    frameOpacity = 0;
+  }
+  return frameOpacity;
 }
 
