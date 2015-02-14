@@ -4,9 +4,10 @@
   pointer-events: none;
   position: absolute;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
   text-align: center;
-  width: 100%;
+  width: 20%;
+  left: 40%;
 }
 
 #logo img {
@@ -23,7 +24,6 @@
   display: table;
   bottom: 20%;
   padding-bottom: 3px;
-  pointer-events: none;
 }
 
 #dummy{
@@ -33,7 +33,6 @@
 
 #nav .button {
   @include clickable();
-  pointer-events: auto;
   width: 15%;
   display: table-cell;
   text-align: center;

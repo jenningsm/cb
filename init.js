@@ -17,3 +17,10 @@ var imgContainer = document.getElementById("bwork");
 var banner = document.getElementById("banner");
 var decoration = document.getElementById("imagedecoration");
 var front = document.getElementById("frontpage");
+var logoImg = document.getElementById("logoimage");
+
+
+function bannerPointerEvents(state){
+   banner.style.pointerEvents = (state ? "auto" : "none");
+   logoImg.style.pointerEvents = (state ? "auto" : "none");
+}

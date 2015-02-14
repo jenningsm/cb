@@ -86,7 +86,6 @@ function workPage(page){
   }
 
   function stop(){
-    console.log("stop " + page.length);
     window.removeEventListener('keydown', onKeyDown);
     window.removeEventListener('resize', resize);
     window.removeEventListener('resize', decorationMove);
