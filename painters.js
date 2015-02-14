@@ -34,7 +34,16 @@ function framePainter(x) {
   bh.style.opacity = x;
   th.style.opacity = x;
 }
+
+var bannerParts = [];
+bannerParts.push(document.getElementById("header"));
+bannerParts.push(document.getElementById("headerback"));
+bannerParts.push(document.getElementById("footer"));
+bannerParts.push(document.getElementById("footerback"));
+
 function bannerPainter(x){
-   banner.style.opacity = x;
+   for(var i = 0; i < bannerParts.length; i++){
+     bannerParts[i].style.opacity = x;
+   }
    decPainter(0, x);
 } 
