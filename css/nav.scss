@@ -32,8 +32,11 @@
 }  
 
 #nav .button {
-  @include clickable();
   width: 15%;
   display: table-cell;
   text-align: center;
+}
+
+.button .buttontext {
+  @include clickable();
 }
