@@ -19,10 +19,10 @@ function createScroller(images){
  
     if(values.bannerOpacity !== bannerOpacity){
       if(values.bannerOpacity <= 0 && bannervis){
-        bannerPointerEvents(false);
+        banner.style.display = 'none';
         bannervis = false;
       } else if (!bannervis && values.bannerOpacity > 0){
-        bannerPointerEvents(true);
+        banner.style.display = 'inline';
         bannervis = true;
       }
       bannerPainter(values.bannerOpacity);
