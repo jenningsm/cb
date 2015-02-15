@@ -52,21 +52,35 @@ function firstFadeIn(){
 
 window.addEventListener('load', firstFadeIn);
 
-function mouseUp(firstY, firstTime){
-  return function(e){
-    var dist = Math.abs(e.screenY - firstY);
+function touchUp(firstY, firstTime){
+  return function(screenY){
+    var dist = Math.abs(screenY - firstY);
     if(dist > height * .1 && dist / (Date.now() - firstTime) > .5){
-      var evt = new CustomEvent('slide', { 'detail' : (e.screenY > firstY ? 'down' : 'up')});
+      var evt = new CustomEvent('slide', { 'detail' : (screenY > firstY ? 'down' : 'up')});
       window.dispatchEvent(evt);
     }
   }
 }
 
 function swipeDetector(e){
-  var y = e.screenY;
-  var tme = Date.now();
-  var f = mouseUp(y, tme);
-  oneTimeListener(document, 'mouseup', f);
+  var touches = e.changedTouches;
+  for(var i = 0; i < touches.length; i++){
+    var touch = touches[i];
+    var y = touch.screenY;
+    var tme = Date.now();
+    var id = touch.identifier;
+    var onUp = touchUp(y, tme);
+    function f(e){
+      var newtouches = e.changedTouches;
+      for(var j = 0; j < newtouches.length; j++){
+        if(newTouches[j].identifier === id){
+          onUp(newTouches[j].screenY);
+          document.removeEventListener('touchend', f);
+        }
+      }
+    }
+    document.addEventListener('touchstart', f);
+  }
 }
 
 function arrowDetector(e){
@@ -77,6 +91,6 @@ function arrowDetector(e){
   }
 }
 
-document.addEventListener('mousedown', swipeDetector);
+document.addEventListener('touchStart', swipeDetector);
 document.addEventListener('keydown', arrowDetector);
 
