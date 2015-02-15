@@ -55,7 +55,7 @@ window.addEventListener('load', firstFadeIn);
 function touchUp(firstY, firstTime){
   return function(screenY){
     var dist = Math.abs(screenY - firstY);
-    if(dist > height * .1 && dist / (Date.now() - firstTime) > .5){
+    if(dist > height * .07 && dist / (Date.now() - firstTime) > .3){
       var evt = new CustomEvent('slide', { 'detail' : (screenY > firstY ? 'up' : 'down')});
       window.dispatchEvent(evt);
     }
