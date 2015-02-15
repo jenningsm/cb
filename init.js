@@ -17,5 +17,5 @@ var imgContainer = document.getElementById("bwork");
 var banner = document.getElementById("banner");
 var decoration = document.getElementById("imagedecoration");
 var front = document.getElementById("frontpage");
-var logoImg = document.getElementById("logoimage");
-
+var footerInstruct = document.getElementById("footerinstructions");
+var footerContent = document.getElementById("footercontent");

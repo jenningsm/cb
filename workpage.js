@@ -59,18 +59,28 @@ function workPage(page){
 
   var imgpr = .5;
   var decpr = 1;
-  function transition(x){
-    if(x <= imgpr){
-      imgElement.style.opacity = x / imgpr;
-    } else {
-      imgElement.style.opacity = 1;
-    }
-
-    if(x > 1 - decpr){
-      decPainter(1, (x - (1 - decpr)) / decpr);
-    } else {
-      decPainter(1, 0);
-    }
+  function transition(otherPageType){
+    return function(x){
+      if(x <= imgpr){
+        imgElement.style.opacity = x / imgpr;
+      } else {
+        imgElement.style.opacity = 1;
+      }
+  
+      if(x > 1 - decpr){
+        decPainter(1, (x - (1 - decpr)) / decpr);
+      } else {
+        decPainter(1, 0);
+      }
+  
+      if(otherPageType != 1){
+        if(x > 1 - decpr){
+          footerInstruct.style.opacity = (x - (1 - decpr)) / decpr;
+        } else {
+          footerInstruct.style.opacity = 0;;
+        }
+      }
+    } 
   }
 
   function start(){
@@ -94,6 +104,6 @@ function workPage(page){
     return transition;
   }
 
-  return { 'start' : start, 'stop' : stop, 'transition' : transition};
+  return { 'start' : start, 'stop' : stop, 'transition' : transition, 'pageType' : 1};
 }
 

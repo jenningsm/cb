@@ -16,17 +16,19 @@ function fade(transition, dir, cb){
 //maps is defined in setup.js
 //function for switching between pages
 var stop = null;
+var oldpage = null;
 function switchPages(switchTo){
   return function pg(cb){
     var newPage = maps[switchTo]();
     var start = newPage.start;
  
     var fadeIn = function(){
-      fade(start(), true, cb)(0);
+      fade(start()(oldpage), true, cb)(0);
+      oldpage = newPage.pageType;
     }
   
     if(stop !== null){
-      fade(stop(), false, fadeIn)(1);
+      fade(stop()(newPage.pageType), false, fadeIn)(1);
     } else {
       fadeIn();
     }

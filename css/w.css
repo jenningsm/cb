@@ -21,13 +21,13 @@
   position: absolute;
   z-index: 1;
   height: 35%;
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 51.42857%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 51.42857%, rgba(255, 255, 255, 0));
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 51.42857%, rgba(255, 255, 255, 0));
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 51.42857%, rgba(255, 255, 255, 0));
+  background: linear-gradient(top, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 51.42857%, rgba(255, 255, 255, 0));
   /* Standard syntax */ }
 
 #logo {
@@ -93,7 +93,8 @@
   position: absolute;
   top: 0%;
   height: 85%;
-  width: 100%; }
+  width: 100%;
+  opacity: 0; }
 
 #footercontent > .dummy {
   display: table-cell; }
@@ -104,8 +105,18 @@
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  font-size: .8em;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  font-size: .9em; }
+
+#footerinstructions {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 85%;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0; }
 
 #footerback {
   z-index: 1;
@@ -113,13 +124,13 @@
   width: 100%;
   height: 21.56%;
   bottom: 0%;
-  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
+  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 53.61781%, rgba(255, 255, 255, 0));
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 53.61781%, rgba(255, 255, 255, 0));
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
+  background: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 53.61781%, rgba(255, 255, 255, 0));
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95) 53.61781%, rgba(255, 255, 255, 0));
+  background: linear-gradient(bottom, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97) 53.61781%, rgba(255, 255, 255, 0));
   /* Standard syntax */ }
 
 #bwork {
@@ -368,6 +379,6 @@ body {
 html, body {
   padding: 0;
   margin: 0;
-  font-family: baskerville; }
+  font-family: Palatino; }
 
 /*# sourceMappingURL=w.css.map */
