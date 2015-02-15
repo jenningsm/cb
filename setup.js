@@ -56,7 +56,7 @@ function touchUp(firstY, firstTime){
   return function(screenY){
     var dist = Math.abs(screenY - firstY);
     if(dist > height * .1 && dist / (Date.now() - firstTime) > .5){
-      var evt = new CustomEvent('slide', { 'detail' : (screenY > firstY ? 'down' : 'up')});
+      var evt = new CustomEvent('slide', { 'detail' : (screenY > firstY ? 'up' : 'down')});
       window.dispatchEvent(evt);
     }
   }
@@ -71,15 +71,15 @@ function swipeDetector(e){
     var id = touch.identifier;
     var onUp = touchUp(y, tme);
     function f(e){
-      var newtouches = e.changedTouches;
-      for(var j = 0; j < newtouches.length; j++){
+      var newTouches = e.changedTouches;
+      for(var j = 0; j < newTouches.length; j++){
         if(newTouches[j].identifier === id){
           onUp(newTouches[j].screenY);
           document.removeEventListener('touchend', f);
         }
       }
     }
-    document.addEventListener('touchstart', f);
+    document.addEventListener('touchend', f);
   }
 }
 
@@ -91,6 +91,6 @@ function arrowDetector(e){
   }
 }
 
-document.addEventListener('touchStart', swipeDetector);
+document.addEventListener('touchstart', swipeDetector);
 document.addEventListener('keydown', arrowDetector);
 
