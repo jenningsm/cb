@@ -4,45 +4,76 @@ function workPage(page){
   var scroller = createScroller(page);
   var footerType = 1;
 
-  var currPos = 0;
+  var lastDir = null;
+  var bannerUp = true;
+
+  var currPos = .5;
   var place = 0;
 
   function slide(dir){
     return function(cb){
-      place += (dir === 'down' ? 1 : -1);
-      place = (place + page.length + 1) % (page.length + 1);
-  
-      var next = 0;
-      next += Math.min(1, place) * .5;
-      next += Math.max(0, place - 1);
   
       var mult = (dir === 'up' ? -1 : 1);
       var speed = .012;
-  
+      var x = 0;
+      var moveBannerIn = ((place === page.length - 1 && dir === 'down') || (place === 1 && dir === 'up'));
+
       function s(){
-        currPos += mult * speed;
-        currPos = currPos % (page.length + .5);
-  
-        if(currPos * mult >= next * mult && (Math.abs(currPos - next) <= speed)){
-          currPos = next;
-          scroller(Math.floor(currPos), currPos % 1);
+        x += speed;
+        currPos += speed * mult;
+        if(currPos > 1){
+          currPos = currPos % 1;
+          place++;
+          place = place % page.length;
+        } else if (currPos < 0){
+          currPos = (currPos + 1) % 1;
+          place--;
+          place = (place + page.length) % page.length;
+        }
+
+        if(x >= 1 && x - speed < 1){
+          currPos = .5;
+          scroller(place, currPos, (moveBannerIn ? 1 : 0));
+          lastDir = dir;
+          bannerUp = moveBannerIn;
           cb();
         } else {
-          if(currPos < 0){
-            currPos += page.length + .5;
-          }
-          scroller(Math.floor(currPos), currPos % 1);
+          scroller(place, currPos, (moveBannerIn ? Math.max(0, 2 * (x - .5)) : 0), (moveBannerIn && x > .5));
           requestAnimationFrame(s);
         }
       }
 
-      if(place === 2 && footerType === 1){
+      function b(way){
+        return (function rec(){
+          x += speed * .75;
+          if(x > .5){
+            scroller(place, currPos, way ? 1 : 0);
+            lastDir = dir;
+            bannerUp = way;
+            cb();
+          } else {
+            scroller(place, currPos, way ? x * 2 : 1 - x * 2);
+            requestAnimationFrame(rec);
+          }
+        });
+      }
+      
+
+      if(place === page.length - 1 && footerType === 1){
         footerType = 0;
         footerContent.style.opacity = 1;
         footerInstruct.style.opacity = 0;
       }  
 
-      requestAnimationFrame(s);
+      var movement;
+      if(dir !== lastDir && !bannerUp){
+        movement = b(true);
+      } else if(bannerUp){
+        movement = b(false);
+      } else {
+        movement = s;
+      }
+      requestAnimationFrame(movement);
     }
   }
 
@@ -53,7 +84,7 @@ function workPage(page){
   }
 
   function resize(){
-     scroller(Math.floor(currPos), currPos % 1);
+     scroller(place, currPos);
   }
 
   var decorationMove = function(){
@@ -87,12 +118,10 @@ function workPage(page){
   }
 
 
-  function start(cb){
+  function start(){
+    scroller(0, .5, 1);
     decorationMove();
 
-    oneTimeListener(imgElement, 'load', cb);
-
-    scroller(0, 0);    
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('resize', resize);
     window.addEventListener('resize', decorationMove);

@@ -1,6 +1,7 @@
 
-$grad-height: 17%;
+$grad-height: 12%;
 $grad-start: ($header-height * 100%) - 2%;
+$grad-start: $header-height * 80%;
 
 #header {
   height: $header-height * 100%;

@@ -37,7 +37,7 @@ function frontPage(){
     }
   }
 
-  function start(cb){
+  function start(){
   
     scrollTo(0,0);
     document.body.style.height = 0;
@@ -46,8 +46,6 @@ function frontPage(){
 
     window.addEventListener('resize', decorationMove);
  
-    cb();
-
     return 0;
   }
 

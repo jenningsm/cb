@@ -28,10 +28,8 @@ function switchPages(switchTo){
     }
 
     var fadeIn = function(){
-      function fi(){
-        fade(newPage.transition(currFooter), true, cb)(0);
-      }
-      newPage.start(fi);
+      newPage.start();
+      fade(newPage.transition(currFooter), true, cb)(0);
     }
   
     if(oldPage !== null){

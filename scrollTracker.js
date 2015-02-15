@@ -17,38 +17,14 @@ var totalTime = 2 * (constTime + accelTime);
 
 function createScrollTracker(numImages){
 
-  var bannerOpacity;
-  var frameOpacity;
-  var imgPosition;
-
   return function(itemNum, x){
 
     x = Math.max(0, Math.min(1, x));
 
-    if(itemNum === 0){ //fade the banner out to images
-       imgPosition = imgTracker(Math.max(.5, x));
-       if(x < .5){
-         bannerOpacity = 1 - 2 * x;
-         frameOpacity = 1 - bannerOpacity;
-       } else {
-         bannerOpacity = 0;
-         frameOpacity = frameTracker(x);
-       }
-    } else if ( itemNum > 0 && itemNum != numImages){//run the images
-       imgPosition = imgTracker(x);
-       frameOpacity = frameTracker(x);
-       bannerOpacity = 0;
-    } else {//fade the banner back in, x should never be greater than .5 in this instance, after .5 it should wrap back to top
-       bannerOpacity = 2 * x;
-       frameOpacity = 0;
-       imgPosition = imgTracker(x);
-    }
+    var frameOpacity = Math.min(1, Math.max(0, frameTracker(x)));
+    var imgPosition = Math.min(1, Math.max(0, imgTracker(x)));
 
-    bannerOpacity = Math.min(1, Math.max(0, bannerOpacity));
-    frameOpacity = Math.min(1, Math.max(0, frameOpacity));
-    imgPosition = Math.min(1, Math.max(0, imgPosition));
-
-    return {'imgPosition' : imgPosition, 'frameOpacity' : frameOpacity, 'bannerOpacity' : bannerOpacity };
+    return {'imgPosition' : imgPosition, 'frameOpacity' : frameOpacity};
      
   }
 }

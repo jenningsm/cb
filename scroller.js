@@ -7,31 +7,46 @@ function createScroller(images){
   var curr = -1;
   var bannervis = true;
 
-  var bannerOpacity = -1;
+  var lastBannerOpacity = -1;
+  var lastImgPosition = -1;
+  var lastFrameOpacity = -1;
 
-  return function(itemNum, x){
+  return function(itemNum, x, bannerOpacity, noFrame){
     var values = scrollValues(itemNum, x);
 
     if(itemNum != curr){
       curr = itemNum;
       setImage(curr % images.length);
     }
+
+    if(bannerOpacity === undefined){
+      bannerOpacity = lastBannerOpacity;
+    }
+    if(noFrame === undefined){
+      noFrame = false;
+    }
  
-    if(values.bannerOpacity !== bannerOpacity){
-      if(values.bannerOpacity <= 0 && bannervis){
+    if(bannerOpacity !== lastBannerOpacity){
+      if(bannerOpacity <= 0 && bannervis){
         banner.style.display = 'none';
         bannervis = false;
-      } else if (!bannervis && values.bannerOpacity > 0){
+      } else if (!bannervis && bannerOpacity > 0){
         banner.style.display = 'inline';
         bannervis = true;
       }
-      bannerPainter(values.bannerOpacity);
-      bannerOpacity = values.bannerOpacity;
+      bannerPainter(bannerOpacity);
+      lastBannerOpacity = bannerOpacity;
     }
+
     imageMover(values.imgPosition);
-    framePainter(values.frameOpacity);
+    lastImgPosition = values.imgPosition;
+
+    var frameOpacity = (bannerOpacity > 0 ? Math.max(0, 1 - bannerOpacity) : values.frameOpacity);
+    if(noFrame) { frameOpacity = 0; }
+
+    if(frameOpacity != lastFrameOpacity){
+      framePainter(frameOpacity);
+      lastFrameOpacity = frameOpacity;
+    }
   }
 }
-
-var curr = 0;
-
