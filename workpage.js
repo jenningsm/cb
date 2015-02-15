@@ -2,7 +2,7 @@
 function workPage(page){
 
   var scroller = createScroller(page);
-
+  var footerType = 1;
 
   var currPos = 0;
   var place = 0;
@@ -18,9 +18,6 @@ function workPage(page){
   
       var mult = (dir === 'up' ? -1 : 1);
       var speed = .012;
-      if((place === 1 && dir === 'down') || (place === 0 && dir === 'up')){
-        speed *= .75;
-      }
   
       function s(){
         currPos += mult * speed;
@@ -38,7 +35,13 @@ function workPage(page){
           requestAnimationFrame(s);
         }
       }
-  
+
+      if(place === 2 && footerType === 1){
+        footerType = 0;
+        footerContent.style.opacity = 1;
+        footerInstruct.style.opacity = 0;
+      }  
+
       requestAnimationFrame(s);
     }
   }
@@ -59,7 +62,7 @@ function workPage(page){
 
   var imgpr = .5;
   var decpr = 1;
-  function transition(otherPageType){
+  function transition(otherFooterType){
     return function(x){
       if(x <= imgpr){
         imgElement.style.opacity = x / imgpr;
@@ -73,18 +76,21 @@ function workPage(page){
         decPainter(1, 0);
       }
   
-      if(otherPageType != 1){
-        if(x > 1 - decpr){
-          footerInstruct.style.opacity = (x - (1 - decpr)) / decpr;
+      if(otherFooterType != footerType){
+        if(footerType === 1){
+          footerInstruct.style.opacity = x;
         } else {
-          footerInstruct.style.opacity = 0;;
+          footerContent.style.opacity = x;
         }
       }
     } 
   }
 
-  function start(){
+
+  function start(cb){
     decorationMove();
+
+    oneTimeListener(imgElement, 'load', cb);
 
     scroller(0, 0);    
     window.addEventListener('keydown', onKeyDown);
@@ -92,7 +98,7 @@ function workPage(page){
     window.addEventListener('resize', decorationMove);
     imgElement.addEventListener('load', resize);
 
-    return transition;
+    return footerType;
   }
 
   function stop(){
@@ -101,9 +107,9 @@ function workPage(page){
     window.removeEventListener('resize', decorationMove);
     imgElement.removeEventListener('load', resize);
 
-    return transition;
+    return footerType;
   }
 
-  return { 'start' : start, 'stop' : stop, 'transition' : transition, 'pageType' : 1};
+  return { 'start' : start, 'stop' : stop, 'transition' : transition, 'footerType' : footerType};
 }
 

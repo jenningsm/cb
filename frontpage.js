@@ -13,7 +13,7 @@ function frontPage(){
 
   var frontpr = .5;
   var decpr = 1;
-  function transition(otherPageType){
+  function transition(otherFooterType){
     return function(x){
       if(x <= frontpr){
         front.style.opacity = x / frontpr;
@@ -27,15 +27,17 @@ function frontPage(){
   
       if(x > 1 - decpr){
         decPainter(1, (x - (1 - decpr)) / decpr);
-        footerContent.style.opacity = (x - (1 - decpr)) / decpr;
       } else {
         decPainter(1, 0);
-        footerContent.style.opacity = 0;
+      }
+
+      if(otherFooterType !== 0){
+        footerContent.style.opacity = x;
       }
     }
   }
 
-  function start(){
+  function start(cb){
   
     scrollTo(0,0);
     document.body.style.height = 0;
@@ -44,16 +46,18 @@ function frontPage(){
 
     window.addEventListener('resize', decorationMove);
  
-    return transition;
+    cb();
+
+    return 0;
   }
 
   function stop(){
     window.removeEventListener('resize', decorationMove);
 
-    return transition;
+    return 0;
   }
 
-  return {'start' : start, 'stop' : stop, 'transition' : transition, 'pageType' : 0};
+  return {'start' : start, 'stop' : stop, 'transition' : transition, 'footerType' : 0};
 }
 
 

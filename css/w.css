@@ -142,7 +142,8 @@
     max-height: 80vh;
     max-width: 80vw;
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    opacity: 0; }
 
 .mid {
   z-index: 0; }

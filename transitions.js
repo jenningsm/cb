@@ -15,24 +15,31 @@ function fade(transition, dir, cb){
 
 //maps is defined in setup.js
 //function for switching between pages
-var stop = null;
-var oldpage = null;
+var oldPage = null;
 function switchPages(switchTo){
   return function pg(cb){
     var newPage = maps[switchTo]();
-    var start = newPage.start;
  
+    var currFooter;
+    if(oldPage !== null){
+      currFooter = oldPage.stop();
+    } else {
+      currFooter = -1;
+    }
+
     var fadeIn = function(){
-      fade(start()(oldpage), true, cb)(0);
-      oldpage = newPage.pageType;
+      function fi(){
+        fade(newPage.transition(currFooter), true, cb)(0);
+      }
+      newPage.start(fi);
     }
   
-    if(stop !== null){
-      fade(stop()(newPage.pageType), false, fadeIn)(1);
+    if(oldPage !== null){
+      fade(oldPage.transition(newPage.footerType), false, fadeIn)(1);
     } else {
       fadeIn();
     }
-    stop = newPage.stop;
+    oldPage = newPage;
   }
 }
 
