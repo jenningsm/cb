@@ -59,7 +59,7 @@ function workPage(page){
       }
       
 
-      if(place === page.length - 1 && footerType === 1){
+      if(place === page.length - 1 && dir === 'down' && footerType === 1){
         footerType = 0;
         footerContent.style.opacity = 1;
         footerInstruct.style.opacity = 0;
@@ -77,10 +77,8 @@ function workPage(page){
     }
   }
 
-  var onKeyDown = function(e){
-    if(e.keyCode === 38 || e.keyCode === 40){
-      stageTransition(slide(e.keyCode === 38 ? 'up' : 'down'));
-    }
+  var onSlide = function(e){
+    stageTransition(slide(e.detail))
   }
 
   function resize(){
@@ -122,7 +120,7 @@ function workPage(page){
     scroller(0, .5, 1);
     decorationMove();
 
-    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('slide', onSlide);
     window.addEventListener('resize', resize);
     window.addEventListener('resize', decorationMove);
     imgElement.addEventListener('load', resize);
@@ -131,7 +129,7 @@ function workPage(page){
   }
 
   function stop(){
-    window.removeEventListener('keydown', onKeyDown);
+    window.removeEventListener('slide', onSlide);
     window.removeEventListener('resize', resize);
     window.removeEventListener('resize', decorationMove);
     imgElement.removeEventListener('load', resize);

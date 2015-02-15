@@ -6,9 +6,9 @@ window.requestAnimationFrame = window.requestAnimationFrame
  || function(f){setTimeout(f, 1000/60)};
 
 function oneTimeListener(target, type, callback){
-  function oneTimeCallback(){
+  function oneTimeCallback(e){
     target.removeEventListener(type, oneTimeCallback);
-    callback();
+    callback(e);
   }
   target.addEventListener(type, oneTimeCallback);
 }

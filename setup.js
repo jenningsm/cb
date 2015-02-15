@@ -51,3 +51,32 @@ function firstFadeIn(){
 }
 
 window.addEventListener('load', firstFadeIn);
+
+function mouseUp(firstY, firstTime){
+  return function(e){
+    var dist = Math.abs(e.screenY - firstY);
+    if(dist > height * .1 && dist / (Date.now() - firstTime) > .5){
+      var evt = new CustomEvent('slide', { 'detail' : (e.screenY > firstY ? 'down' : 'up')});
+      window.dispatchEvent(evt);
+    }
+  }
+}
+
+function swipeDetector(e){
+  var y = e.screenY;
+  var tme = Date.now();
+  var f = mouseUp(y, tme);
+  oneTimeListener(document, 'mouseup', f);
+}
+
+function arrowDetector(e){
+  if(e.keyCode === 38 || e.keyCode === 40){
+    var dir = (e.keyCode === 38 ? 'up' : 'down');
+    var evt = new CustomEvent('slide', {'detail' : dir});
+    window.dispatchEvent(evt);
+  }
+}
+
+document.addEventListener('mousedown', swipeDetector);
+document.addEventListener('keydown', arrowDetector);
+
