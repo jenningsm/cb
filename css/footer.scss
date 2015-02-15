@@ -33,7 +33,7 @@ $footer-grad-start: $footer-height;
   text-align: center;
   vertical-align: middle;
   word-wrap: break-word;
-  font-size: .9em;
+  font-size: .95em;
 }
 
 #footerinstructions {
@@ -45,6 +45,7 @@ $footer-grad-start: $footer-height;
   align-items: center;
   pointer-events: none;
   opacity: 0;
+  font-size: 1.2em;
 }
 
 #footerback{
