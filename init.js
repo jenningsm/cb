@@ -19,3 +19,4 @@ var decoration = document.getElementById("imagedecoration");
 var front = document.getElementById("frontpage");
 var footerInstruct = document.getElementById("footerinstructions");
 var footerContent = document.getElementById("footercontent");
+

@@ -94,3 +94,23 @@ function arrowDetector(e){
 document.addEventListener('touchstart', swipeDetector);
 document.addEventListener('keydown', arrowDetector);
 
+var x = 1;
+var mult = -1;
+function touchInstructions(){
+  console.log("change");
+  if(x > 1){
+    footerInstruct.style.opacity = 1;
+  } else if(x < 0){
+    mult = 1;
+    document.getElementById("instructiontext").innerHTML = "Swipe up/down to browse";
+    x = 0;
+    footerInstruct.style.opacity = 0;
+    requestAnimationFrame(touchInstructions);
+  } else {
+    x += .01 * mult;
+    footerInstruct.style.opacity = x;
+    requestAnimationFrame(touchInstructions);
+  }
+}
+
+oneTimeListener(document, 'touchstart', touchInstructions);
