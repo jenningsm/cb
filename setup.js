@@ -97,7 +97,6 @@ document.addEventListener('keydown', arrowDetector);
 var x = 1;
 var mult = -1;
 function touchInstructions(){
-  console.log("change");
   if(x > 1){
     footerInstruct.style.opacity = 1;
   } else if(x < 0){
@@ -107,7 +106,7 @@ function touchInstructions(){
     footerInstruct.style.opacity = 0;
     requestAnimationFrame(touchInstructions);
   } else {
-    x += .01 * mult;
+    x += .02 * mult;
     footerInstruct.style.opacity = x;
     requestAnimationFrame(touchInstructions);
   }
