@@ -96,7 +96,7 @@ $frame-thickness: 2px;
   top: 0;
   height: $front-image;
   width: 100%;
-  display: flex;
+  @include flex();
   align-items: center;
   justify-content: center;
 

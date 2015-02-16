@@ -45,7 +45,7 @@ function workPage(page){
 
       function b(way){
         return (function rec(){
-          x += speed * .75;
+          x += speed * (way ? .75 : 1);
           if(x > .5){
             scroller(place, currPos, way ? 1 : 0);
             lastDir = dir;

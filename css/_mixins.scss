@@ -28,3 +28,11 @@
   -o-user-select: none;
   user-select: none;
 }
+
+@mixin flex(){
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
