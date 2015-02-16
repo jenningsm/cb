@@ -11,7 +11,7 @@ function createScroller(images){
   var lastImgPosition = -1;
   var lastFrameOpacity = -1;
 
-  return function(itemNum, x, bannerOpacity, noFrame){
+  return function(itemNum, x, bannerOpacity, suppressFrame){
     var values = scrollValues(itemNum, x);
 
     if(itemNum != curr){
@@ -22,8 +22,8 @@ function createScroller(images){
     if(bannerOpacity === undefined){
       bannerOpacity = lastBannerOpacity;
     }
-    if(noFrame === undefined){
-      noFrame = false;
+    if(suppressFrame === undefined){
+      suppressFrame = false;
     }
  
     if(bannerOpacity !== lastBannerOpacity){
@@ -42,7 +42,7 @@ function createScroller(images){
     lastImgPosition = values.imgPosition;
 
     var frameOpacity = (bannerOpacity > 0 ? Math.max(0, 1 - bannerOpacity) : values.frameOpacity);
-    if(noFrame) { frameOpacity = 0; }
+    if(suppressFrame) { frameOpacity = 0; }
 
     if(frameOpacity != lastFrameOpacity){
       framePainter(frameOpacity);
