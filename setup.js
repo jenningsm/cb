@@ -1,5 +1,5 @@
 
-var root = '/cb';
+var root = '';
 
 //the path to the images
 var imagepath = "./links/";
