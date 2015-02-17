@@ -15,16 +15,14 @@
 var next = null;
 
 function stageTransition(transition){
+   pushTransition(transition);
+   executeTransition(false);
+}
+
+function pushTransition(transition){
    var hold = next;
    next = transition;
-   if(transition !== null){
-     executeTransition();
-   }
-   if(hold !== null){
-     return hold;
-   } else {
-     return null;
-   }
+   return hold;
 }
 
 /*
@@ -34,12 +32,15 @@ function stageTransition(transition){
   executeTransition is never called while a transition is still running
 */
 var running = false;
-function executeTransition(){
+function executeTransition(finished){
+  if(finished){
+    running = false;
+  }
   if(!running){
-    var x = stageTransition(null);
+    var x = pushTransition(null);
     if(x !== null){
       running = true;
-      x(function() { running = false; executeTransition(); });
+      x(function() { executeTransition(true) });
     }
   }
 }

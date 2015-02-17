@@ -43,6 +43,7 @@ function resizeFrame(box, solid, fade){
 
       frm[i][j].style.transform = composeTransform("translate", (i+1)%2, (j * 2 - 1) * box[(i+1)%2], 0, "px");
 
+      //mid is the solid middle part of each line, while grads are the two fading ends of each line
       var grads = [frm[i][j].getElementsByClassName("first")[0],frm[i][j].getElementsByClassName("last")[0]];
       var mid = frm[i][j].getElementsByClassName("mid")[0];
 
@@ -65,6 +66,7 @@ function resizeFrame(box, solid, fade){
 }
 
 
+//function to frame image, or reframe when the page or image dimensions change
 function frameImage(){
   var cheight = imgElement.clientHeight;
   var cwidth = imgElement.clientWidth;

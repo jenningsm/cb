@@ -1,7 +1,8 @@
 
 /*
   The image decoration (those two horizontal grey bars behind the image) needs to be painted both on scrolling (along with the banner)
-    and on transitions. 
+    and on transitions. this painter multiplies two painting channels (one for scrolling and one for transitions) to get the output
+    opacity for the image decoration
 */
 
 var values = [];
