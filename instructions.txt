@@ -1,0 +1,28 @@
+To remove, add, or reorder images, go to setup.js and add, remove, or
+reorder elements in the 'art', 'photos', 'design', or 'illustration' arrays,
+each one corresponding to one of the pages.
+
+Anytime you change the javascript, you'll need to reminify it. To do this,
+run the command
+
+./minifyjs.sh
+
+in the terminal. If that doesn't work, try opening minifyjs.sh and removing
+the pound sign from the third and fourth line, and running it again (put the
+# signs back after you run it this first time). If that still doesn't work,
+you can either include the javascript unminified in your site, or find
+another way to minify the javascript, there are lots of them.
+
+To include the javascript unminified just remove the script tag for
+my.min.js in index.html and in it's place put a script tag for each js file, 
+in the order listed in minifyjs.sh.
+
+
+To change the text on the front page, simply put whatever you like in the 
+"fronttext" div in index.html.
+
+The contact info in the footer can be changed by putting new content in the
+"info" divs within the "footercontent" div, itself within the "footer" div.
+
+I wouldn't mess with the "frame", "bwork", or "imagedecoration" divs, since
+the javascript messes with them alot.
