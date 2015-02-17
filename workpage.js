@@ -9,6 +9,7 @@ function workPage(page){
 
   var currPos = .5;
   var place = 0;
+  var absPlace = 0;
 
   function slide(dir){
     return function(cb){
@@ -25,10 +26,12 @@ function workPage(page){
           currPos = currPos % 1;
           place++;
           place = place % page.length;
+          absPlace++;
         } else if (currPos < 0){
           currPos = (currPos + 1) % 1;
           place--;
           place = (place + page.length) % page.length;
+          absPlace--;
         }
 
         if(x >= 1 && x - speed < 1){
@@ -59,7 +62,8 @@ function workPage(page){
       }
       
 
-      if(place === page.length - 1 && dir === 'down' && footerType === 1){
+      if((place === page.length - 1 && dir === 'down' && footerType === 1 && absPlace > 0) ||
+         (place === 1 && dir === 'up' && footerType === 1 && absPlace < 0)){
         footerType = 0;
         footerContent.style.opacity = 1;
         footerInstruct.style.opacity = 0;
