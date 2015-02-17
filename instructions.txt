@@ -26,3 +26,15 @@ The contact info in the footer can be changed by putting new content in the
 
 I wouldn't mess with the "frame", "bwork", or "imagedecoration" divs, since
 the javascript messes with them alot.
+
+the css is written with sass (sass-lang.com). If you're not familiar with 
+it, you can learn the basics in 20-30 minutes with the tutorials on that
+site. Each time you change the sass it needs to be recompiled
+(and minified) with
+
+sass main.scss:w.min.css style=compressed
+
+You'll have to install sass before you run this command.
+
+You can also set it up so that it automatically compiles each time
+you change the sass (google 'sass watch').
