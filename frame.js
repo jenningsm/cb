@@ -14,6 +14,11 @@ function composeTransform(transform, dim, x, stat, unit) {
   return transform + "(" + (dim !== 0 ? still + "," + trans : trans + "," + still) + ")";
 }
 
+function applyTransform(element, transform){
+  element.style.webkitTransform = transform
+  element.style.transform = transform
+}
+
 /* 
     frame: takes frame dimension info, and transforms the frame elements to match
 
@@ -41,14 +46,14 @@ function resizeFrame(box, solid, fade){
     
     for(var j = 0; j < 2; j++){
 
-      frm[i][j].style.transform = composeTransform("translate", (i+1)%2, (j * 2 - 1) * box[(i+1)%2], 0, "px");
+      applyTransform(frm[i][j], composeTransform("translate", (i+1)%2, (j * 2 - 1) * box[(i+1)%2], 0, "px"))
 
       //mid is the solid middle part of each line, while grads are the two fading ends of each line
       var grads = [frm[i][j].getElementsByClassName("first")[0],frm[i][j].getElementsByClassName("last")[0]];
       var mid = frm[i][j].getElementsByClassName("mid")[0];
 
       var midsize = (box[i] + (dim - box[i]) * solid[i]) / dim;
-      mid.style.transform = composeTransform("scale", i, midsize, 1, "");
+      applyTransform(mid, composeTransform("scale", i, midsize, 1, ""))
 
       var gradscale = fade[i] * (dim - box[i]) / dim;
       for(var k = 0; k < 2; k++){
@@ -59,7 +64,7 @@ function resizeFrame(box, solid, fade){
         var transform = composeTransform("translate", i, translate, 0, "px");
         transform += " ";
         transform += composeTransform("scale", i, gradscale, 1, "");
-        grads[k].style.transform = transform;
+        applyTransform(grads[k], transform)
       }      
     }
   }
