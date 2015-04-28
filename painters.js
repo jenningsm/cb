@@ -26,7 +26,9 @@ function decPainter(channel, x){
 
 
 function imageMover(x){
-  imgContainer.style.transform = "translate3d(0, -" + x * (height + imgElement.clientHeight) + "px, 0)";
+  var transform = "translate3d(0, -" + x * (height + imgElement.clientHeight) + "px, 0)";
+  imgContainer.style.webkitTransform = transform;
+  imgContainer.style.transform = transform;
 }
 
 function framePainter(x) { 
